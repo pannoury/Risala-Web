@@ -4,6 +4,7 @@ import getCurrentTime from '../modules/time';
 import Layout from '../components/layout';
 import axios from 'axios';
 import useLocale from '../hooks/useLocale';
+import informationManager from '../modules/informationManager';
 
 export default function Contact() {
     const [contactState, setContactStage] = useState(1)
@@ -60,10 +61,10 @@ export default function Contact() {
                         setContactStage(2)
                     }
                 })
-                .catch((error) => 
+                .catch((error) => {
+                    console.error(error)
+                })
 
-            } else{
-                
             }
         }
 
