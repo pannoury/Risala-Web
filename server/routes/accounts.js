@@ -86,7 +86,7 @@ router.post('/upload', upload.single('profile_picture'), (req, res, next) => {
                             })
                         } else if(req.headers.referer === "http://localhost:3000/" || req.headers.referer === "http://localhost:8000"){
                             fs.unlinkSync(path.resolve(__dirname, '..', '..', 'app', 'public', 'uploads', result[0].profile_picture.substring(11, result[0].profile_picture.length)), (err) => {
-                                console.log(err)
+                                
                                 if(err) throw err
                             })
                         }
@@ -114,7 +114,7 @@ router.post('/upload', upload.single('profile_picture'), (req, res, next) => {
             let sql = `select id, members from unique_chats where JSON_CONTAINS(members, '{"id": "${id}"}', '$')`
             mysql_database.query(sql, (err, result) => {
                 if(!err){
-                    console.log(result.length)
+                    
                     const membersLength = result.length
 
                     if(result.length === 0){
@@ -133,7 +133,7 @@ router.post('/upload', upload.single('profile_picture'), (req, res, next) => {
                                     res.send(err).status(400)
                                     isError = true;
                                 } else if(updateResult.affectedRows !== 1){
-                                    console.log("Affected rows is 0")
+                                    
                                 }
                             })
     
@@ -170,7 +170,7 @@ router.post('/create', (req, res) => {
             password: hash,
             profile_picture: null
         }
-        console.log(infoObject)
+        
     
         let sql = `insert into Accounts 
             (
@@ -276,7 +276,7 @@ router.post('/restore', (req, res) => {
                 })
                 .catch((err) => {
                     res.send(err)
-                    console.log(err)
+                    
                 })
             } else {
                 throw err
@@ -309,7 +309,7 @@ router.post('/change_password', (req, res) => {
         const saltRounds = 10;
         var hash = bcrypt.hashSync(req.body.password, saltRounds)
 
-        console.log(hash)
+        
 
         if(hash){
             let sql = "update Accounts set password = ?, temp = null, temp_flag = null, expiration_date = null where account_id = ?"

@@ -90,7 +90,7 @@ export const chatSlice = createSlice({
             state.value[`${action.payload.array}`] = [...state.value[`${action.payload.array}`], action.payload.value]
         },
         arrayRemoveIndex: (state, action) => {
-            console.log(action);
+            
             state.value[action.payload.key] = state.value.filter((e, i) => i !== action.payload.value)
         },
         arrayRemove: (state, action) => {

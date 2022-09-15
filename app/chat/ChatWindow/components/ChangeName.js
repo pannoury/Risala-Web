@@ -74,7 +74,7 @@ export default function ChangeName({closeWindow, socket}){
         })
         .catch((err) => {
             errorManagement(err)
-            console.log(err)
+            
         })
     }
 

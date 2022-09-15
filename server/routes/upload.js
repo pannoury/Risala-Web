@@ -19,13 +19,13 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage })
 
 router.post('/', upload.any('image') , (req, res, next) => {
-    console.log(req.files)
+    
     //req.body == project-id, only applicable for update of projects
     //else it is empty
 
     //Project update
     if(req.body['project-id']){
-        console.log(Object.keys(req.body)[0])
+        
         var newPathObject = {}
 
         //For File Upload (new files)

@@ -20,7 +20,7 @@ export default function CallerWindow({ socket }){
         })
         .catch((err) => {
             informationManager({purpose: 'error', message: `${err.message} Please allow your browser to access the camera/microphone.`})
-            console.log(err)
+            
             socket.emit('call-closed', {
                 id: callSettings.id,
                 user_id: USER_DATA.account_id,

@@ -112,7 +112,7 @@ router.post('/chat', (req, res) => {
         var chat_id = req.body.chat_id
 
         if(req.body.offset){
-            console.log(req.body.offset)
+            
             var offset = req.body.offset
             let sql = `select * from chat where id = ? order by timestamp desc limit ? offset ?`
             mysql_database.query(sql, [chat_id, 100, offset], (err, result) => {
@@ -142,7 +142,7 @@ router.post('/chat-settings', (req, res) => {
         let sql = `select settings, files from unique_chats where id = ?`
         mysql_database.query(sql, [req.body.id], (err, result) => {
             if(!err){
-                //console.log(result, result.length, result[0])
+                //
                 if(result.length === 0){
                     var standardSettings = JSON.stringify({
                         color: "#e1872c",
@@ -158,7 +158,7 @@ router.post('/chat-settings', (req, res) => {
                         if(!err){
                             res.send({"color":"#e1872c", "emoji":"👍"}).status(200)
                         } else {
-                            console.log(err)
+                            
                         }
                     })
                 } else {
@@ -202,7 +202,7 @@ router.post('/chat-settings', (req, res) => {
     }
 })
 router.post('/upload', upload.any('image') , (req, res, next) => {
-    console.log(req.files)
+    
     //req.body == project-id, only applicable for update of projects
     //else it is empty
 
@@ -213,7 +213,7 @@ router.post('/upload', upload.any('image') , (req, res, next) => {
         newPathObject.push(`../uploads/${fileName}`)
     }
 
-    console.log(newPathObject)
+    
     res.status(200).send(newPathObject)
 })
 router.post('/update-settings', (req, res) => {
@@ -328,7 +328,7 @@ router.post('/nicknames', (req, res) => {
         throw new Error("No id/nickname was provided")
     }
 
-    console.log(req.body.nicknames)
+    
 
     let sql = "update unique_chats set nicknames = ? where id = ?"
     mysql_database.query(sql, [req.body.nicknames, req.body.id], (err, result) => {
@@ -345,7 +345,7 @@ router.post('/conv-search', (req, res) => {
     if(req.body.id){
         var id = req.body.id
         var search = req.body.search
-        console.log(req.body.search)
+        
 
         let sql = `SELECT * FROM unique_chats WHERE 
         JSON_CONTAINS(members, '{"id": "${id}"}', '$') and 
@@ -381,7 +381,7 @@ router.post('/delete-conv', (req, res) => {
             mysql_database.query(sql, [req.body.id], (err, result) => {
                 if(!err){
                     if(result.length !== 0){
-                        console.log(`FILES: ${result[0]}`)
+                        
                         var files = result[0]
                         for (let i = 0; i < req.body.files.length; i++){
                             if(fs.lstatSync(path.resolve(process.env.RISALA_UPLOADS_PATH || path.resolve(__dirname, '..', '..', 'app', 'public', 'uploads', `${filess[i]}`))).isFile()){

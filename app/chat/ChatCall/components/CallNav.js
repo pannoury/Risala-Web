@@ -37,7 +37,7 @@ export default function CallNav({ socket, screenShare, stopScreenShare }){
         }
 
         if(peerSettings.peerObject){
-            console.log(peerSettings.peerObject)
+            
             socket.emit('call-message', {
                 purpose: 'camera',
                 enabled: !userSettings.isCam,
@@ -69,7 +69,7 @@ export default function CallNav({ socket, screenShare, stopScreenShare }){
                 }}
             ))
         } catch (err){
-            console.log(err)
+            
         }
     }
 
@@ -84,7 +84,7 @@ export default function CallNav({ socket, screenShare, stopScreenShare }){
                 video.srcObject = null;
             })
         } catch (err){
-            console.log(err)
+            
         }
 
         socket.emit('call-closed', {

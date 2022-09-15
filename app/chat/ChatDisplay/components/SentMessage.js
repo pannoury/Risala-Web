@@ -77,10 +77,10 @@ export default function SentMessage({index, value, optionSelect, timestamp, arra
         if(value.reply_text){
             try {
                 var isMedia = JSON.parse(value.reply_text)
-                //console.log(isMedia, current.id)
+                //
                 
                 if(isMedia.length === 1){
-                    //console.log(current.files.files.map(e => e.path).some(e => isMedia[0].includes(e))) //Can we find the same path in files
+                    //
                     
                     if(current.files.files.map(e => e.path).some(e => isMedia[0].includes(e))){
                         isMedia = false;
@@ -158,7 +158,7 @@ export default function SentMessage({index, value, optionSelect, timestamp, arra
         //    target.classList.remove('focused-message')
         //}
         //
-        //console.log(e.target)
+        //
     }
 
     return(
@@ -213,7 +213,7 @@ export default function SentMessage({index, value, optionSelect, timestamp, arra
                                                 var mediaObject = current.files.images.filter(mediaObject => mediaObject.path === e)[0]
                                             }
                                             
-                                            //console.log(mediaObject)
+                                            //
                                             if(mediaObject){
                                                 var aspectRatio = mediaObject.dimensions[0] / mediaObject.dimensions[1]
                                                 var type = mediaObject.type.split('/')[0]

@@ -24,7 +24,7 @@ export default function Restore({setSignUp, setRestore}){
     */
 
     async function restore(){
-      console.log(username.current.value)
+      
       const match = await postRequest('accounts/control', {username: username.current.value})
       
       if(match.length === 1 && match[0].username === username.current.value){
@@ -36,15 +36,15 @@ export default function Restore({setSignUp, setRestore}){
         })
         .then((response) => {
           if(response.errno){
-            console.log("error")
+            
           } else {
             setSuccess(true)
           }
-          console.log(response)
+          
         })
         .catch((err) => {
           errorManagement(err)
-          console.log(err)
+          
         })
 
       } else {

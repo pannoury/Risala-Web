@@ -26,7 +26,7 @@ app.use(cors())
 app.disable('etag');
 
 httpServer.listen(process.env.SERVER_PORT, () =>{
-    console.log(`running on port ${process.env.SERVER_PORT}`)
+    
 })
 ///////////////////////////////////////////////////////
 
@@ -87,7 +87,7 @@ io.on('connection', (socket) => {
 
     
     socket.on('disconnect', (data) => {
-        console.log(`User Disconnected: ${socket.id}`);
+        
     });
 
     socket.on('remove', (data) => {
@@ -112,17 +112,17 @@ io.on('connection', (socket) => {
     /*                        CALLS                        */
     /*******************************************************/
     socket.on('call-init', (data) => {
-        console.log('**** CALL INIT *****', data.room)
+        
         socket.to(data.room).emit('call-init', data)
     })
     
     socket.on('call-closed', (data) => {
-        console.log('call-closed', data.room)
+        
         socket.to(data.room).emit('call-closed', data)
     })
 
     socket.on('call-join', (data) => {
-        console.log('Call-joined', data.room)
+        
         socket.to(data.room).emit('call-join', data)
     })
 
@@ -131,7 +131,7 @@ io.on('connection', (socket) => {
     })
 
     socket.on('call-error', (data) => {
-        console.log('**** CALL ERROR *****', data.room)
+        
         socket.to(data.room).emit('call-error', data)
     })
 });

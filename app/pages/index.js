@@ -126,7 +126,7 @@ export default function Index(){
                 dispatch(objectAdd({key: 'USER_DATA', value: response}))
             })
             .catch((err) => {
-              console.log(err)
+              
               setTimeout(() => {
                 router.push("/login/")
               }, 3000)

@@ -38,7 +38,7 @@ export default function SignUp({setSignUp, setRestore}){
 
         const match = await postRequest('accounts/control', {username: values[2]})
 
-        console.log(match)
+        
         if(match.length === 0){
           postRequest('accounts/create', {
             id: uuidv4(),
@@ -56,7 +56,7 @@ export default function SignUp({setSignUp, setRestore}){
             //errorManagement(err)
             setLoading(false)
             alert("An error has occurred, please inform the administrator of this website")
-            console.log(err)
+            
           })
 
         } else {

@@ -71,7 +71,7 @@ export default function RemoveMember({closeWindow, socket}){
         })
         .catch((err) => {
             errorManagement(err)
-            console.log(err)
+            
         })
     }
 

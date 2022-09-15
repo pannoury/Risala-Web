@@ -522,7 +522,7 @@ export default function sendMessage(value, inputRef, socket){
                 }
             }))
         } catch (err) {
-            console.log(err)
+            
         }
     }
 }

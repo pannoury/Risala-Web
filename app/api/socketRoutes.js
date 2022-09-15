@@ -13,13 +13,13 @@ function socketMessage(data){
     const USER_DATA = state.USER_DATA
     const MESSAGES = state.MESSAGES
 
-    console.log(data)
+    
 
     //Updates files and Media in Chat Settings window
     if(data.file_paths){
         updateFilesAndMedia()
         .then((response) => {
-            console.log(response)
+            
         })
         .catch((err) => {
             errorManagement(err)
@@ -110,7 +110,7 @@ function socketMessage(data){
                             ['members']: data.members
                         }
     
-                        console.log(newCurrent)
+                        
     
                         store.dispatch(chatReducer({
                             current: newCurrent,
@@ -123,7 +123,7 @@ function socketMessage(data){
                             ['members']: data.groupMembers
                         }
     
-                        console.log(newCurrent)
+                        
     
                         store.dispatch(chatReducer({
                             current: newCurrent,
@@ -349,8 +349,8 @@ function socketRemove(data){
     if(data.current_id === current.id && data.message_id){
         var targetedChat = chat.find(e => e.id === current.id)
         var newChat = chat.filter(e => !data.message_id.includes(e.message_id))
-        console.log(data.message_id)
-        console.log(newChat)
+        
+        
 
         if(targetedChat.length <= 2){
             postRequest('chat/delete-conv', {id: current.id})
@@ -370,16 +370,16 @@ function socketRemove(data){
             })
             .catch((err) => {
                 errorManagement(err)
-                console.log(err)
+                
             })
         } else {
             //Multiple message ids has been passed
             try{
-                console.log(data.message_id, typeof data.message_id)
+                
                 if(typeof data.message_id === "object" && data.message_id.length >= 2){
                     //for(let i = 0; i < data.message_id.length; i++){
-                    //    console.log(data.message_id[i])
-                    //    console.log(document.querySelector(`[message_id="${data.message_id[i]}"]`))
+                    //    
+                    //    
                     //    if(document.querySelector(`[message_id="${data.message_id[i]}"]`)){
                     //        var target = document.querySelector(`[message_id="${data.message_id[i]}"]`)
                     //        target.classList.add('removed')
@@ -402,7 +402,7 @@ function socketRemove(data){
                 }
             } catch (err) {
                 errorManagement(err)
-                console.log(err)
+                
             }
         }
     
@@ -414,7 +414,7 @@ function socketRemove(data){
             })
             .catch((err) => {
                 errorManagement(err)
-                console.log(err)
+                
             })
 
             //Update chats
@@ -447,8 +447,8 @@ function socketJoin(data){
     const current = state.current
     const USER_DATA = state.USER_DATA
 
-    console.log("Join emitted")
-    console.log(data)
+    
+    
 
     postRequest('chat', {id: USER_DATA.account_id})
     .then((response) => {
@@ -465,7 +465,7 @@ function socketJoin(data){
     })
     .catch((err) => {
         errorManagement(err)
-        console.log(err)
+        
     })
 }
 

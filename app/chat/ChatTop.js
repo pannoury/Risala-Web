@@ -325,7 +325,7 @@ export default function  ChatTop({setWidth, socket}){
                 }
             } catch(err){
                 errorManagement(err)
-                console.log(err)
+                
             }
 
             setUserSelected(id)
@@ -347,7 +347,7 @@ export default function  ChatTop({setWidth, socket}){
             }
             userSearchRef.current.focus();
         } else {
-            //console.log(id, firstname, lastname)
+            //
         }
     }
 
@@ -373,7 +373,7 @@ export default function  ChatTop({setWidth, socket}){
             .catch((err) => {
                 informationManager({purpose: 'error', message: err.message})
                 errorManagement(err)
-                console.log(err)
+                
             })
         } else {
             setUserSuggestLoading(false)
@@ -425,7 +425,7 @@ export default function  ChatTop({setWidth, socket}){
 
         // No match
         if(!match){
-            console.log("No match")
+            
             dispatch(chatReducer({
                 newMessage: {
                     is_searching: true,
@@ -456,7 +456,7 @@ export default function  ChatTop({setWidth, socket}){
             })
             .catch((err) => {
                 informationManager({purpose: 'error', message: `${err.message} Please allow your browser to access the camera/microphone.`})
-                console.log(err)
+                
             })
     
             function initCall(stream, cameraError = false){

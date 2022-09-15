@@ -39,7 +39,7 @@ export default function Restore(){
             purpose: p
         })
         .then((response) => {
-            console.log(response)
+            
             if(response.length === 1){
                 setAccount(response[0].account_id)
                 setIsLoading(false)
@@ -51,7 +51,7 @@ export default function Restore(){
         .catch((err) => {
             setIsLoading(false)
             setError(true)
-            console.log(err)
+            
         })
     }
 
@@ -63,11 +63,11 @@ export default function Restore(){
                 password: inputValue[0].value
             })
             .then((response) => {
-                console.log(response)
+                
                 setPasswordChanged(true)
             })
             .catch((err) => {
-                console.log(err)
+                
             })
         } else {
             alert("Lösenord måste matcha, samt vara längre än 5 karaktärer!")
@@ -87,7 +87,7 @@ export default function Restore(){
         })
         .catch((err) => {
             errorManagement(err)
-            console.log(err)
+            
         })
     }
 

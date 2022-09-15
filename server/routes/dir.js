@@ -6,7 +6,7 @@ const fs = require('fs');
 
 router.get('/', (req, res) => {
 
-    console.log(req.headers.referer, req.cookies)
+    
 
     if(req.headers.referer === "https://codenoury.se/admin/" || req.headers.referer === "https://codenoury.se/admin"){
         var dir = "/var/www/html"
@@ -52,7 +52,7 @@ router.post('/remove', (req, res) => {
     var dir = req.body.path
     var unlinkPath = req.body.unlinkPath
 
-    console.log(unlinkPath)
+    
 
     if(fs.lstatSync(unlinkPath).isDirectory()){ //remove directories
         try{

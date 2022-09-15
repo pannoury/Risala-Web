@@ -60,10 +60,10 @@ export default function Contact() {
                         setContactStage(2)
                     }
                 })
-                .catch((error) => console.log(error))
+                .catch((error) => 
 
             } else{
-                console.log("error")
+                
             }
         }
 

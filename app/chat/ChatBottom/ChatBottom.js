@@ -37,7 +37,7 @@ export default function ChatBottom({inputRef, socket}){
 
     useEffect(() => {
         if(reply){
-            //console.log(reply.text, USER_DATA, reply)
+            //
         }
     }, [reply])
 
@@ -57,8 +57,8 @@ export default function ChatBottom({inputRef, socket}){
             }
         }
 
-        //console.log(chatHeight)
-        //console.log((inputRef.current.scrollHeight / 20) > 6 ? 6 : inputRef.current.scrollHeight / 20)
+        //
+        //
         //Fix height for display
         if(inputValue.length === 0 || inputValue === "" && chatHeight > 1){
             setChatHeight(1) //Counts number of rows for chatwindow
@@ -122,7 +122,7 @@ export default function ChatBottom({inputRef, socket}){
             }
         } else if(e.type === 'backspace'){
             var row = (inputRef.current.scrollHeight / 20) > 6 ? 6 : inputRef.current.scrollHeight / 20
-            console.log(row)
+            
         }
     }
 
@@ -150,7 +150,7 @@ export default function ChatBottom({inputRef, socket}){
             var totAdd = totAdd + 70
         }
 
-        //console.log(totAdd, initialDisplayHeight)
+        //
         if(totAdd === 50){
             document.querySelector('.chat-display').style.height = `${initialDisplayHeight}px`
         } else {
@@ -182,7 +182,7 @@ export default function ChatBottom({inputRef, socket}){
         async function chatConfirmed(e){
             if(e.type === "change" || e._reactName === "onChange"){
                 e.preventDefault();
-                //console.log(e.target.files[0], files)
+                //
                 if(e.target.files.length > 0){
 
                     var type = e.target.files[0].type.split('/')[0]
@@ -228,7 +228,7 @@ export default function ChatBottom({inputRef, socket}){
                     if(type === 'image' || type === 'video' && fileMediaObject.size < 20971520){
                         getDimensions(e.target.files[0], type)
                         .then((e) => {
-                            console.log(type, fileMediaObject.size)
+                            
                             fileMediaObject.dimensions = e.dimensions
                             var newMediaArray = [...uploadFiles.images, fileMediaObject]
     
@@ -369,7 +369,7 @@ export default function ChatBottom({inputRef, socket}){
                                 {
                                     files.map((value, index) => {
                                         var type = value.type.split('/')[0]
-                                        //console.log(value, type)
+                                        //
 
                                         if(type === "application"){
                                             return(

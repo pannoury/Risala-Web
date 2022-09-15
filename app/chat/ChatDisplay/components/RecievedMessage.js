@@ -72,7 +72,7 @@ export default function RecievedMessage({index, value, optionSelect, timestamp, 
                     var senderObject = nickname.filter((e) => e.id === senderID)[0]
                     var recieverObject = nickname.filter((e) => e.id === value.reply_to_id)[0]
 
-                    //console.log(senderObject, recieverObject)
+                    //
 
                     if(value.reply_to_id === USER_DATA.account_id){
                         if(senderObject[0]){
@@ -88,7 +88,7 @@ export default function RecievedMessage({index, value, optionSelect, timestamp, 
                 } else {
                     var senderObject = current.members.filter((e) => e.id === senderID)[0]
                     var recieverObject = current.members.filter((e) => e.id === value.reply_to_id)[0]
-                    //console.log(senderObject, recieverObject)
+                    //
                     if(senderObject && recieverObject){
                         if(value.reply_to_id === USER_DATA.account_id){
                             var replied_text = `${senderObject.firstname} replied to you`
@@ -145,7 +145,7 @@ export default function RecievedMessage({index, value, optionSelect, timestamp, 
     if(value.files === "1"  || value.files === true){
         file = true;
         filePath = JSON.parse(value.file_paths)
-        //console.log(value.message_id, filePath)
+        //
     }
     /************************************************************************************/
 

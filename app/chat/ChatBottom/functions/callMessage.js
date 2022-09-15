@@ -13,7 +13,7 @@ export default function callMessage(socket, isMissed = false){
     const COUNTER_DATA = state.COUNTER_DATA
     const USER_DATA = state.USER_DATA
 
-    console.log(callSettings)
+    
 
     var textObject = {
         purpose: callSettings.purpose,

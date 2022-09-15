@@ -75,7 +75,7 @@ export default function ChatSettings({ locale, current, USER_DATA }){
 
     useEffect(() => {
         if(options){
-            console.log(options)
+            
             window.addEventListener('click', windowClick)
         } else {
             window.removeEventListener('click', windowClick)

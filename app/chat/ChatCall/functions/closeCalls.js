@@ -9,7 +9,7 @@ export function callTerminated(socket){
     const userSettings  =   callSettingReducer.userSettings
     const USER_DATA     =   state.USER_DATA
 
-    console.log("Call terminated was triggered")
+    
     if(userSettings.userStream){
         userSettings.userStream.getTracks().forEach(function(track) {
             track.stop();
@@ -26,22 +26,22 @@ export function callTerminated(socket){
     // Cleaning function, removes stream, castStream and destroys peer
     try {
         document.querySelectorAll('.call-window video').forEach((video) => {
-            console.log(video)
+            
             var tracks = video.srcObject.getTracks();
             tracks.forEach((track) => {
-                console.log(track)
+                
                 track.stop()
             })
             video.srcObject = null;
         })
     } catch(err){
-        console.log(err)
+        
     }
 
     try {
         userSettings.userPeer.destroy()
     } catch(err){
-        console.log(err)
+        
     }
 
     store.dispatch(callSettingsReset())
@@ -53,7 +53,7 @@ export function callInterrupt(err, socket){
     const userSettings  =   callSettingReducer.userSettings
     const USER_DATA     =   state.USER_DATA
 
-    console.log(err)
+    
     if(callSettings.initiator){
         callMessage(socket)
     }
@@ -69,22 +69,22 @@ export function callInterrupt(err, socket){
     // Cleaning function, removes stream, castStream and destroys peer
     try {
         document.querySelectorAll('.call-window video').forEach((video) => {
-            console.log(video)
+            
             var tracks = video.srcObject.getTracks();
             tracks.forEach((track) => {
-                console.log(track)
+                
                 track.stop()
             })
             video.srcObject = null;
         })
     } catch(err){
-        console.log(err)
+        
     }
 
     try {
         userSettings.userPeer.destroy()
     } catch(err){
-        console.log(err)
+        
     }
 
     store.dispatch(callSettingsReset())

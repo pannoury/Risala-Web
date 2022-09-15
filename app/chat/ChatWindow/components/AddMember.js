@@ -40,7 +40,7 @@ export default function AddMember({closeWindow, socket}){
             })
             .catch((err) => {
                 errorManagement(err)
-                console.log(err)
+                
             })
         } else {
             setUserSuggestLoading(false)

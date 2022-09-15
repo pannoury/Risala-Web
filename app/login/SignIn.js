@@ -24,7 +24,7 @@ export default function SignIn({setSignUp, setRestore}){
             password: passwordRef.current.value
           })
           .then((response) => {
-            console.log(response)
+            
 
             if(typeof response === "object" && response.account_id && response.username){
               var cookieObject = {
@@ -42,7 +42,7 @@ export default function SignIn({setSignUp, setRestore}){
             if(err.message === "Request failed with status code 404"){
               setIncorrect(true)
             } else {
-              console.log(err)
+              
               setIncorrect(true)
               //errorManagement(err)
             }

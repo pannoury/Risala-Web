@@ -10,7 +10,7 @@ function callInit(data, socket){
     if(!data.initiator && !callSettings.isActive){
         store.dispatch(callSettingReducer({...data}))
     } else if(callSettings.id !== data.id) {
-        console.log(callSettings, data.initiator)
+        
         // You are already busy in a call, so perhaps this could be tweaked better
         socket.emit('call-closed', {
             id: callSettings.id,

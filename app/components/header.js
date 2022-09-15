@@ -24,7 +24,7 @@ export default function Header({ locale }){
   }
 
   useEffect(() => {
-    console.log(getCookie('user'))
+    
     window.addEventListener('scroll', navbarScroll)
     window.addEventListener('load', navbarScroll)
   
