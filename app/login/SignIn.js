@@ -67,8 +67,8 @@ export default function SignIn({setSignUp, setRestore}){
             <p className="light">
               {
                 locale !== "sv"
-                ? "Enter your credentials to access the admin panel"
-                : "Var god och ange dina användaruppgifter för att komma vidare till adminpanelen"
+                ? "Please enter your credentials to acess the chat application"
+                : "Var god och ange dina användaruppgifter för att komma vidare"
               }
             </p>
             {
