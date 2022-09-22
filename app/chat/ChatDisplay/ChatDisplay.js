@@ -4,16 +4,16 @@ import { postRequest, errorManagement }         from "../../api/api";
 import { chatReducer }                          from "../../features/chat";
 import { timeStamp }                            from "../../modules/timeStamp";
 
-import RecievedMessage  from "./components/RecievedMessage";
-import SentMessage      from "./components/SentMessage";
-import TimeSeparator    from "./components/TimeSeparator";
-import EventSeparator   from "./components/EventSeparator";
-import ArrowBottom      from "./components/ArrowBottom";
-import GroupBadge       from "./components/GroupBadge";
-import Typing           from "./components/Typing";
-import OptionsWindow    from "./components/OptionsWindow";
-import CallEvent from "./components/CallEvent";
-import informationManager from "../../modules/informationManager";
+import RecievedMessage      from "./components/RecievedMessage";
+import SentMessage          from "./components/SentMessage";
+import TimeSeparator        from "./components/TimeSeparator";
+import EventSeparator       from "./components/EventSeparator";
+import ArrowBottom          from "./components/ArrowBottom";
+import GroupBadge           from "./components/GroupBadge";
+import Typing               from "./components/Typing";
+import OptionsWindow        from "./components/OptionsWindow";
+import CallEvent            from "./components/CallEvent";
+import informationManager   from "../../modules/informationManager";
 
 
 /************************************************
