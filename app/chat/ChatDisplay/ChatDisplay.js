@@ -129,6 +129,7 @@ export default function ChatDisplay({current, inputRef, chat, locale, USER_DATA}
     }, [reply])
 
     function scrollDetect(e){
+        let position = e.target.scrollHeight;
         if(document.querySelector('.chat-list-wrapper')?.scrollTop === 0 && moreMessage && document.querySelector('.chat-list-wrapper').childElementCount >= 100 && !loading){
             setChatLoading(true)
             postRequest('chat/chat', {
@@ -139,6 +140,7 @@ export default function ChatDisplay({current, inputRef, chat, locale, USER_DATA}
 
                 var data = response
                 dispatch(chatReducer({chat: (data.reverse().concat(chat))}))
+                document.querySelector('.chat-list-wrapper').scrollTo(0, position)
                 setTimeout(() => {
                     setChatLoading(false)
                 }, 100)
