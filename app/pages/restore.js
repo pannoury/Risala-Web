@@ -97,7 +97,7 @@ export default function Restore(){
                 {
                     isLoading === true &&
                     <div className="main-window">
-                        <img src="https://codenoury.se/assets/logo-long-yellow.svg"/>
+                        <img src="https://datablock.dev/assets/logo-long-yellow.svg"/>
                         <div className="lazy-load">
                             <div className="skeleton"></div>
                         </div>
@@ -118,10 +118,10 @@ export default function Restore(){
                 {
                     (p === "confirm_email" && !isLoading && !error) && 
                     <div className="main-window">
-                        <img src="https://codenoury.se/assets/logo-long-yellow.svg"/>
+                        <img src="https://datablock.dev/assets/logo-long-yellow.svg"/>
                         <h1>{locale === "en" ? "Account confirmation succeeded!" : "Bekfräftelse lyckad!"}</h1>
                         <p>Ditt konto är nu bekfräftat, du kan nu logga in med ditt användarnamn (e-postadress) samt lösenord på inloggningsportalen. Portalen kommer du till genom att klicka på länken nedan</p>
-                        <Link href="https://risala.codenoury.se/login">
+                        <Link href="https://risala.datablock.dev/login">
                             <a className="button button-yellow-square">
                                 {locale === "en" ? "Sign in" : "Logga in"}
                             </a>
@@ -131,7 +131,7 @@ export default function Restore(){
                 {
                     (p === "restore_password" && !isLoading && !error) &&
                     <div className="main-window restore_password">
-                        <img src="https://codenoury.se/assets/logo-long-yellow.svg"/>
+                        <img src="https://datablock.dev/assets/logo-long-yellow.svg"/>
                         <h1>Change password</h1>
                         {
                             !passwordChanged ?
@@ -174,7 +174,7 @@ export default function Restore(){
                             :
                             <>
                                 <p>Lösenordet är nu bytt! Klicka på knappen nedan för att gå till inloggningsportalen!</p>
-                                <Link href="https://risala.codenoury.se/login">
+                                <Link href="https://risala.datablock.dev/login">
                                     <a className="button button-yellow-square">
                                         { locale === "en" ? "Sign in" : "Logga in" }
                                     </a>
@@ -186,12 +186,12 @@ export default function Restore(){
                 {
                     error &&
                     <div className="main-window">
-                        <img src="https://codenoury.se/assets/logo-long-yellow.svg"/>
+                        <img src="https://datablock.dev/assets/logo-long-yellow.svg"/>
                         <h1>{locale === "sv" ? "Något gick snett!" : "Something went wrong!"}</h1>
                         <p>{locale === "sv" ? "Webbservern kunde inte bekfräfta eller tolka din efterfrågan. Var god och kontakta administratör ifall detta inte är förväntant" : 
                         "The web server could not confirm or understand your request. If this is unexpected, then please reach out to the administrator or the owner of this website"}
                         </p>
-                        <Link href="https://risala.codenoury.se">
+                        <Link href="https://risala.datablock.dev">
                             <a className="button button-yellow-square">
                                 {locale === "sv" ? "Ta mig härifrån" : "Redirect me"}
                             </a>

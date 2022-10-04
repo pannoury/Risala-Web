@@ -129,7 +129,7 @@ export default function SignUp({setSignUp, setRestore}){
     return (
       <div id="login-wrapper">
       <div className="login-side-div">
-        <img src="https://codenoury.se/assets/logo-long-yellow.svg" alt="logo-long-yellow" />
+        <img src="https://datablock.dev/assets/logo-long-yellow.svg" alt="logo-long-yellow" />
         {
           confirmed ?
           <>

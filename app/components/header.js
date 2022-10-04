@@ -73,7 +73,7 @@ export default function Header({ locale }){
     <header className='navbar-wrapper' style={ navbar === true ? {background: '#141414', borderBottom: '1px solid #ffffff33'} : {backgroundColor: 'transparent', borderBottom: '1px solid transparent'}}>
       <nav id="navbar">
           <Link  onClick={() => {setMobileNavbar(false)} } href={locale === "Sv" ? "/Sv" : "/"}>
-            <a className='desktop-logo'><img src="https://codenoury.se/assets/logo-long-yellow.svg" alt="logo-yellow"/></a>
+            <a className='desktop-logo'><img src="https://datablock.dev/assets/logo-long-yellow.svg" alt="logo-yellow"/></a>
           </Link>
           <div id="mobile-navbar-list" onClick={ navbarMobileList }>
               {

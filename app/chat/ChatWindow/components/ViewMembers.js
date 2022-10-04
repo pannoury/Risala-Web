@@ -52,7 +52,7 @@ export default function ViewMembers({closeWindow}){
                                 return (
                                     <div className="user" key={i}>
                                         <figure>
-                                            <img src={e.profile_picture ? e.profile_picture : "https://codenoury.se/assets/generic-profile-picture.png"} alt="profile_picture"/>
+                                            <img src={e.profile_picture ? e.profile_picture : "https://datablock.dev/assets/generic-profile-picture.png"} alt="profile_picture"/>
                                         </figure>
                                         <span>
                                             {e.firstname + ' ' + e.lastname}
@@ -69,7 +69,7 @@ export default function ViewMembers({closeWindow}){
                                 return (
                                     <div className="user" key={i}>
                                         <figure>
-                                            <img src={e.profile_picture ? e.profile_picture : "https://codenoury.se/assets/generic-profile-picture.png"} alt="profile_picture"/>
+                                            <img src={e.profile_picture ? e.profile_picture : "https://datablock.dev/assets/generic-profile-picture.png"} alt="profile_picture"/>
                                         </figure>
                                         <span>
                                             {e.firstname + ' ' + e.lastname}

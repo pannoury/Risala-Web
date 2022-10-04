@@ -63,7 +63,7 @@ export default function ChatNavbar({USER_DATA, locale}){
             <div className="chat-navbar">
                 <Link href={locale === "sv" ? "/sv" : "/"}>
                   <a className='desktop-logo'>
-                    <img src="https://codenoury.se/assets/logo-long-yellow.svg" alt="codenoury-logo"/>
+                    <img src="https://datablock.dev/assets/logo-long-yellow.svg" alt="codenoury-logo"/>
                   </a>
                 </Link>
                 <div 
@@ -74,7 +74,7 @@ export default function ChatNavbar({USER_DATA, locale}){
                         USER_DATA.account_id &&
                         <>
                             <figure>
-                                <img src={USER_DATA.profile_picture ? USER_DATA.profile_picture : "https://codenoury.se/assets/generic-profile-picture.png"}/>
+                                <img src={USER_DATA.profile_picture ? USER_DATA.profile_picture : "https://datablock.dev/assets/generic-profile-picture.png"}/>
                             </figure>
                             <span>
                                 {USER_DATA.firstname + ' ' + USER_DATA.lastname}

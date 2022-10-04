@@ -208,13 +208,13 @@ export default function RecievedMessage({index, value, optionSelect, timestamp, 
                 {
                     (group && (!previousMatch && !nextMatch || previousMatch && !nextMatch)) &&
                     <figure className="sent-profile-img">
-                        <img src={sender ? sender.profile_picture ? sender.profile_picture : "https://codenoury.se/assets/generic-profile-picture.png" : "https://codenoury.se/assets/generic-profile-picture.png"}/>
+                        <img src={sender ? sender.profile_picture ? sender.profile_picture : "https://datablock.dev/assets/generic-profile-picture.png" : "https://datablock.dev/assets/generic-profile-picture.png"}/>
                     </figure>
                 }
                 {
                     (!group && ((!previousMatch && !nextMatch) || previousMatch && !nextMatch)) &&
                     <figure className="sent-profile-img">
-                        <img src={COUNTER_DATA[0].profile_picture ? `${COUNTER_DATA[0].profile_picture}` : "https://codenoury.se/assets/generic-profile-picture.png"}/>
+                        <img src={COUNTER_DATA[0].profile_picture ? `${COUNTER_DATA[0].profile_picture}` : "https://datablock.dev/assets/generic-profile-picture.png"}/>
                     </figure>
                 }
                 {

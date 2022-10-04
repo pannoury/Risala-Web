@@ -15,7 +15,7 @@ export default function CallUI({ peerObject, peerAudio}){
                         userSettings.isMuted &&
                         <i className="material-icons">mic_off</i>
                     }
-                    <img src={ USER_DATA.profile_picture ? USER_DATA.profile_picture : "https://codenoury.se/assets/generic-profile-picture.png" }/>
+                    <img src={ USER_DATA.profile_picture ? USER_DATA.profile_picture : "https://datablock.dev/assets/generic-profile-picture.png" }/>
                 </figure>
                 <div className="volume-meter" data-value=""></div>
                 {
@@ -31,7 +31,7 @@ export default function CallUI({ peerObject, peerAudio}){
                             peerSettings.isMuted &&
                             <i className="material-icons">mic_off</i>
                         }
-                        <img src={ peerSettings.peerObject.profile_picture ? peerSettings.peerObject.profile_picture : "https://codenoury.se/assets/generic-profile-picture.png" }/>
+                        <img src={ peerSettings.peerObject.profile_picture ? peerSettings.peerObject.profile_picture : "https://datablock.dev/assets/generic-profile-picture.png" }/>
                     </figure>
                     <div className="volume-meter" data-value=""></div>
                 </div>

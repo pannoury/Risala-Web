@@ -113,7 +113,7 @@ export default function ChatSideMenu({}){
                         data_selected={"true"}
                     >
                         <figure >
-                            <img src="https://codenoury.se/assets/generic-profile-picture.png"/>
+                            <img src="https://datablock.dev/assets/generic-profile-picture.png"/>
                         </figure>
                         <div className="chat-info">
                             <span className="preview-text">New message</span>

@@ -7,16 +7,16 @@ export default function Footer(locale) {
     if (e.target.value === "En") {
       if (locale === "sv") {
         if(window.location.search){
-          window.location = `https://codenoury.se/${window.location.pathname.substring(4)}${window.location.search}`
+          window.location = `https://datablock.dev/${window.location.pathname.substring(4)}${window.location.search}`
         } else{
-          window.location = `https://codenoury.se/${window.location.pathname.substring(4)}`
+          window.location = `https://datablock.dev/${window.location.pathname.substring(4)}`
         }
       }
     } else {
       if(window.location.search){
-        window.location = `https://codenoury.se/sv${window.location.pathname}${window.location.search}`
+        window.location = `https://datablock.dev/sv${window.location.pathname}${window.location.search}`
       } else{
-        window.location = `https://codenoury.se/sv${window.location.pathname}`
+        window.location = `https://datablock.dev/sv${window.location.pathname}`
       }
     }
   };
@@ -29,7 +29,7 @@ export default function Footer(locale) {
           <div className="footer-column">
             <Link href="/">
               <a>              
-                <img src="https://codenoury.se/assets/logo-long-yellow.svg" alt="logo-yellow" height="50px" width="200px" />
+                <img src="https://datablock.dev/assets/logo-long-yellow.svg" alt="logo-yellow" height="50px" width="200px" />
               </a>
             </Link>
           </div>

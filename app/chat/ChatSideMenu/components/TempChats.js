@@ -59,17 +59,17 @@ export default function TempChats({tempChats, conversationSelect}){
                             {
                                 members.length === 1 &&
                                 <figure>
-                                    <img src={members[0].profile_picture ? `${members[0].profile_picture}` : "https://codenoury.se/assets/generic-profile-picture.png"}/>
+                                    <img src={members[0].profile_picture ? `${members[0].profile_picture}` : "https://datablock.dev/assets/generic-profile-picture.png"}/>
                                 </figure>
                             }
                             {
                                 members.length > 1 &&
                                 <div className="group-figure">
                                     <figure>
-                                        <img src={members[0].profile_picture ? `${members[0].profile_picture}` : "https://codenoury.se/assets/generic-profile-picture.png"}/>
+                                        <img src={members[0].profile_picture ? `${members[0].profile_picture}` : "https://datablock.dev/assets/generic-profile-picture.png"}/>
                                     </figure>
                                     <figure>
-                                        <img src={members[1].profile_picture ? `${members[1].profile_picture}` : "https://codenoury.se/assets/generic-profile-picture.png"}/>
+                                        <img src={members[1].profile_picture ? `${members[1].profile_picture}` : "https://datablock.dev/assets/generic-profile-picture.png"}/>
                                     </figure>
                                 </div> 
                             }

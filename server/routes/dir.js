@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
 
     
 
-    if(req.headers.referer === "https://codenoury.se/admin/" || req.headers.referer === "https://codenoury.se/admin"){
+    if(req.headers.referer === "https://datablock.dev/admin/" || req.headers.referer === "https://datablock.dev/admin"){
         var dir = "/var/www/html"
 
         res.send(getDirectory(dir)).status(200)

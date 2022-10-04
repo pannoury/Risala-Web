@@ -194,7 +194,7 @@ export default function CallNav({ socket, screenShare, stopScreenShare }){
                     (!loading && callSettings.isActive) &&
                     <>
                         <figure>
-                            <img src={callSettings.members.filter(e => e.id !== USER_DATA.account_id)[0].profile_picture ? callSettings.members.filter(e => e.id !== USER_DATA.account_id)[0].profile_picture : "https://codenoury.se/assets/generic-profile-picture.png"} />
+                            <img src={callSettings.members.filter(e => e.id !== USER_DATA.account_id)[0].profile_picture ? callSettings.members.filter(e => e.id !== USER_DATA.account_id)[0].profile_picture : "https://datablock.dev/assets/generic-profile-picture.png"} />
                         </figure>
                         {
                             nickname ?
