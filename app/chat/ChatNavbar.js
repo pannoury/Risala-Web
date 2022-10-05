@@ -63,7 +63,7 @@ export default function ChatNavbar({USER_DATA, locale}){
             <div className="chat-navbar">
                 <Link href={locale === "sv" ? "/sv" : "/"}>
                   <a className='desktop-logo'>
-                    <img src="https://datablock.dev/assets/logo-long-yellow.svg" alt="codenoury-logo"/>
+                    <img src="https://risala.datablock.dev/assets/datablock_logo_long_yellow.svg" alt="datablock-logo"/>
                   </a>
                 </Link>
                 <div 

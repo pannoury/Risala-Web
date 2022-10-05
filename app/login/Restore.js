@@ -55,8 +55,8 @@ export default function Restore({setSignUp, setRestore}){
     return (
         <div id="login-wrapper">
             <div className="login-side-div">
-              <img src="https://datablock.dev/assets/logo-long-yellow.svg" alt="logo-long-yellow" />
-              <h1>{locale === "en" ? "Restore Account" : "Återställ konto"}</h1>
+              <img src="https://risala.datablock.dev/assets/datablock_logo_long_white.svg" alt="logo-long-white" />
+              <h1 style={{marginBottom: '20px'}}>{locale === "en" ? "Restore Account" : "Återställ konto"}</h1>
               {
                 incorrect &&
                 <div id="wrong-password">

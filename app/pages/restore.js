@@ -97,7 +97,7 @@ export default function Restore(){
                 {
                     isLoading === true &&
                     <div className="main-window">
-                        <img src="https://datablock.dev/assets/logo-long-yellow.svg"/>
+                        <img src="https://risala.datablock.dev/assets/datablock_logo_long_white.svg"/>
                         <div className="lazy-load">
                             <div className="skeleton"></div>
                         </div>
@@ -118,7 +118,7 @@ export default function Restore(){
                 {
                     (p === "confirm_email" && !isLoading && !error) && 
                     <div className="main-window">
-                        <img src="https://datablock.dev/assets/logo-long-yellow.svg"/>
+                        <img src="https://datablock.dev/assets/datablock_logo_long_white.svg"/>
                         <h1>{locale === "en" ? "Account confirmation succeeded!" : "Bekfräftelse lyckad!"}</h1>
                         <p>Ditt konto är nu bekfräftat, du kan nu logga in med ditt användarnamn (e-postadress) samt lösenord på inloggningsportalen. Portalen kommer du till genom att klicka på länken nedan</p>
                         <Link href="https://risala.datablock.dev/login">

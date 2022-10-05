@@ -24,8 +24,6 @@ export default function SignIn({setSignUp, setRestore}){
             password: passwordRef.current.value
           })
           .then((response) => {
-            
-
             if(typeof response === "object" && response.account_id && response.username){
               var cookieObject = {
                 id: response.account_id,
@@ -62,7 +60,7 @@ export default function SignIn({setSignUp, setRestore}){
     return(
         <div id="login-wrapper">
           <div className="login-side-div">
-            <img src="https://datablock.dev/assets/logo-long-yellow.svg" alt="logo-long-yellow" />
+            <img src="https://risala.datablock.dev/assets/datablock_logo_long_white.svg" alt="logo-long-yellow" />
             <h1>{locale !== "sv" ? "Sign in" : "Logga in"}</h1>
             <p className="light">
               {

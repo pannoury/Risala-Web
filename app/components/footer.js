@@ -29,7 +29,7 @@ export default function Footer(locale) {
           <div className="footer-column">
             <Link href="/">
               <a>              
-                <img src="https://datablock.dev/assets/logo-long-yellow.svg" alt="logo-yellow" height="50px" width="200px" />
+                <img src="https://risala.datablock.dev/assets/datablock_logo_long_yellow.svg" alt="logo-yellow" height="50px" width="200px" />
               </a>
             </Link>
           </div>
