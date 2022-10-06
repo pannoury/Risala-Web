@@ -21,7 +21,7 @@ const upload = multer({ storage: storage })
 router.post('/', (req, res) => {
     if(req.body.id){
         var id = req.body.id
-        let sql = `SELECT * FROM unique_chats WHERE JSON_CONTAINS(members, '{"id": "${id}"}', '$') order by recent_message->"$.timestamp" desc`
+        let sql = `SELECT * FROM unique_chats WHERE JSON_CONTAINS(members, '{"id": "${id}"}', '$') order by json_value(recent_message, '$.timestamp') desc`
         mysql_database.query(sql, [id], (err, result) => {
             if(!err){
                 res.status(200).send(result)

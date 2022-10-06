@@ -6,6 +6,7 @@ const fs = require('fs');
 const path = require('path');
 const mysql_database = require('../config');
 const nodemailer = require('nodemailer');
+const sgMail = require('@sendgrid/mail')
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -199,6 +200,22 @@ router.post('/create', (req, res) => {
 
                 const mail_Ouput = createEmail(req.body.firstname, req.body.temp, req.body.username)
 
+                sgMail.setApiKey(process.env.SENDGRID_API_KEY)
+                const msg = {
+                    to: `${infoObject.username}`,
+                    from: "noreply@datablock.dev",
+                    subject: "Your inquiry has been recieved",
+                    html: mail_Ouput
+                }
+
+                sgMail.send(msg)
+                .then(() => {
+                    res.status(200).send("Success")
+                })
+                .catch((err) => {
+                    res.status(400).send(err)
+                })
+                /*
                 let transporter = nodemailer.createTransport({
                     host: process.env.MAIL_HOST,
                     port: 587,
@@ -235,7 +252,7 @@ router.post('/create', (req, res) => {
                     }
                     
                 })
-                
+                */
             } else throw err
         })
     } else {
@@ -250,6 +267,23 @@ router.post('/restore', (req, res) => {
             if(!err){
                 const mail_Ouput = restoreEmail(req.body.id, req.body.username)
 
+                sgMail.setApiKey(process.env.SENDGRID_API_KEY)
+                const msg = {
+                    to: `${req.body.username}`,
+                    from: "noreply@datablock.dev",
+                    subject: "Your inquiry has been recieved",
+                    html: mail_Ouput
+                }
+
+                sgMail.send(msg)
+                .then(() => {
+                    res.status(200).send("Success")
+                })
+                .catch((err) => {
+                    res.status(400).send(err)
+                })
+
+                /*
                 let transporter = nodemailer.createTransport({
                     host: process.env.MAIL_HOST,
                     port: 587,
@@ -278,6 +312,7 @@ router.post('/restore', (req, res) => {
                     res.send(err)
                     
                 })
+                */
             } else {
                 throw err
             }
@@ -308,8 +343,6 @@ router.post('/change_password', (req, res) => {
         //hash password
         const saltRounds = 10;
         var hash = bcrypt.hashSync(req.body.password, saltRounds)
-
-        
 
         if(hash){
             let sql = "update Accounts set password = ?, temp = null, temp_flag = null, expiration_date = null where account_id = ?"

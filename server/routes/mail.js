@@ -3,6 +3,7 @@ const router = express.Router();
 const nodemailer = require('nodemailer')
 const mysql = require('mysql');
 const mysql_database = require('../config');
+const sgMail = require('@sendgrid/mail');
 
 // route = '/mail'
 router.post('/', (req, res) => {
@@ -144,6 +145,23 @@ router.post('/', (req, res) => {
                 </html>
                 `;
 
+                sgMail.setApiKey(process.env.SENDGRID_API_KEY)
+                const msg = {
+                    to: `${dataObj.email}`,
+                    from: "noreply@datablock.dev",
+                    subject: "Your inquiry has been recieved",
+                    html: mail_Ouput
+                }
+
+                sgMail.send(msg)
+                .then(() => {
+                    res.status(200).send("Success")
+                })
+                .catch((err) => {
+                    res.status(400).send(err)
+                })
+
+                /*
                 let transporter = nodemailer.createTransport({
                     host: process.env.MAIL_HOST,
                     port: 587,
@@ -172,6 +190,9 @@ router.post('/', (req, res) => {
                     }
                     res.status(200).send(info)
                 })
+                */
+            } else {
+                throw err
             }
         })
     }

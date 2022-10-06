@@ -30,6 +30,14 @@ export default function ChatSideMenu({}){
 
     function conversationSelect(e){
         var chat_id = e.currentTarget.getAttribute('data_id')
+        if(newMessage?.is_searching){
+            dispatch(chatReducer({
+                newMessage: {
+                    is_searching: false,
+                    new_conversation: false
+                }
+            }))
+        }
 
         if(chats.length >= 2 && current.id !== chat_id){
             var selected = e.currentTarget.getAttribute('data_selected')
