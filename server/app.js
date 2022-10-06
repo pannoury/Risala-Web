@@ -32,6 +32,7 @@ httpServer.listen(process.env.SERVER_PORT, () =>{
 
 //Routes
 const uploadRouter      = require('./routes/upload');
+const risalaUpload      = require('./routes/risalaUpload');
 const mailRouter        = require('./routes/mail');
 const dirRouter         = require('./routes/dir');
 const accountRouter     = require('./routes/accounts')
@@ -43,6 +44,7 @@ const projectsRouter    = require('./routes/projects');
 var route = process.env.EXPRESS_ROUTE
 
 app.use(route + '/upload', uploadRouter);
+app.use(route + '/risalaUpload', risalaUpload);
 app.use(route + '/mail', mailRouter);
 app.use(route + '/dir', dirRouter);
 app.use(route + '/accounts', accountRouter);

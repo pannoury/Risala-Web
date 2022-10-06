@@ -47,6 +47,7 @@ router.post('/', upload.any('image') , (req, res, next) => {
         res.status(200).send(newPathObject)
     }
 })
+
 router.post('/delete', (req, res) => {
     if(!req.body.paths) res.send("Path was missing").status(400)
 

@@ -34,6 +34,7 @@ router.post('/', upload.any('image') , (req, res, next) => {
             var fileName = req.files[i].filename
             newPathObject[`${fieldName}`] = `../uploads/${fileName}`;
         }
+        
         res.status(200).send(newPathObject)
     } else{
         var newPathObject = {}
@@ -46,6 +47,7 @@ router.post('/', upload.any('image') , (req, res, next) => {
         res.status(200).send(newPathObject)
     }
 })
+
 router.post('/delete', (req, res) => {
     if(!req.body.paths) res.send("Path was missing").status(400)
 
