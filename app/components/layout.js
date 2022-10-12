@@ -39,7 +39,7 @@ export default function Layout({ children, title, margin}){
         <link rel="icon" type="image/png" sizes="16x16" href="https://datablock.dev/assets/favicon-16x16.png"/>
         <link rel="icon" type="image/png" sizes="32x32" href="https://datablock.dev/assets/favicon-32x32.png"/>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"></link>
-        <title>{`${title} | Codenoury`}</title>
+        <title>{`${title} | DataBlock`}</title>
       </Head>
       <main style={{marginTop: margin ? margin : null}}>
         {children}
