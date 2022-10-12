@@ -4,6 +4,7 @@ import getCurrentTime from '../modules/time';
 import Layout from '../components/layout';
 import axios from 'axios';
 import useLocale from '../hooks/useLocale';
+import informationManager from '../modules/informationManager';
 
 export default function Contact() {
     const [contactState, setContactStage] = useState(1)
@@ -49,7 +50,7 @@ export default function Contact() {
                 let url;
                 window.location.hostname === "localhost" ? 
                 url = "http://localhost:800/mail" :
-                url = "https://codenoury.se/api/mail"
+                url = "https://datablock.dev/api/mail"
 
                 axios.post(url, {
                     data: dataObj
@@ -60,10 +61,10 @@ export default function Contact() {
                         setContactStage(2)
                     }
                 })
-                .catch((error) => console.log(error))
+                .catch((error) => {
+                    console.error(error)
+                })
 
-            } else{
-                console.log("error")
             }
         }
 
@@ -129,7 +130,7 @@ export default function Contact() {
                             c32-12.1,66-32.9,83.3-63.3c18.9-33.2,20.4-73.8,10.6-110.1c-5.4-20.2-16.5-39.6-33.9-51.2C465,8.3,444.5,5.2,426.9,11.5
                             c-17.6,6.3-31.7,22.4-34.6,40.9c-2.2,14.6,2.3,29.7,10.5,42c23,34.3,62.5,42.9,101.2,41.8c57.4-1.5,114-29.7,160.1-63.4"/>
                     </svg>
-                    <img src="https://codenoury.se/assets/paper-plane.svg" id="paper-plane" alt="paper-plane"/>
+                    <img src="https://datablock.dev/assets/paper-plane.svg" id="paper-plane" alt="paper-plane"/>
                 </div>
             </>
         )

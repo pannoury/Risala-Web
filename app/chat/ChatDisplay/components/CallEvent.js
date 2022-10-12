@@ -97,7 +97,7 @@ export default function CallEvent({ value, index, locale, array, USER_DATA, curr
             {
                 (!nextMatch && !isSender) &&
                 <figure className="sent-profile-img">
-                    <img src={counter.profile_picture ? counter.profile_picture : "https://codenoury.se/assets/generic-profile-picture.png"}/>
+                    <img src={counter.profile_picture ? counter.profile_picture : "https://datablock.dev/assets/generic-profile-picture.png"}/>
                 </figure>
             }
             <div 

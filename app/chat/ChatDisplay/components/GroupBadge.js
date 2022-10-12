@@ -29,10 +29,10 @@ export default function GroupBadge({ locale }){
                     <div className="group-badge-wrapper">
                         <div className="group-figure">
                             <figure>
-                                <img src={others[0].profile_picture ? `${others[0].profile_picture}` : "https://codenoury.se/assets/generic-profile-picture.png"}/>
+                                <img src={others[0].profile_picture ? `${others[0].profile_picture}` : "https://datablock.dev/assets/generic-profile-picture.png"}/>
                             </figure>
                             <figure>
-                                <img src={others[1].profile_picture ? `${others[1].profile_picture}` : "https://codenoury.se/assets/generic-profile-picture.png"}/>
+                                <img src={others[1].profile_picture ? `${others[1].profile_picture}` : "https://datablock.dev/assets/generic-profile-picture.png"}/>
                             </figure>
                         </div>
                         <span className="group-name">

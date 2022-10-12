@@ -67,7 +67,7 @@ export default function Files({ value, filePath, recieved, fileReply, reply }){
                                                 style={style}
                                                 onClick={(() => { fileClick(value.path) })}
                                             >
-                                                <img src={`https://risala.codenoury.se/${value.path.substring(3)}`}/>
+                                                <img src={`https://risala.datablock.dev/${value.path.substring(3)}`}/>
                                             </figure>
                                         </>
                                     )
@@ -95,7 +95,7 @@ export default function Files({ value, filePath, recieved, fileReply, reply }){
                                                 style={style}
                                                 onClick={(() => { fileClick(value.path) })}
                                             >
-                                                <video src={`https://risala.codenoury.se/${value.path.substring(3)}`} controls />
+                                                <video src={`https://risala.datablock.dev/${value.path.substring(3)}`} controls />
                                             </figure>
                                         </>
                                     )
@@ -130,7 +130,7 @@ export default function Files({ value, filePath, recieved, fileReply, reply }){
                                     <>
                                         <a 
                                             className="file-wrapper" 
-                                            href={`https://risala.codenoury.se/${value.path.substring(3)}`} 
+                                            href={`https://risala.datablock.dev/${value.path.substring(3)}`} 
                                             target="_blank" rel="noopener noreferrer" 
                                             title={value.name}
                                             key={value.path + index + 'not-reply'} 
@@ -162,7 +162,7 @@ export default function Files({ value, filePath, recieved, fileReply, reply }){
                             <>
                                 <a 
                                     className="file-wrapper" 
-                                    href={`https://risala.codenoury.se/${fileObject.path.substring(3)}`} 
+                                    href={`https://risala.datablock.dev/${fileObject.path.substring(3)}`} 
                                     target="_blank" rel="noopener noreferrer" 
                                     title={fileObject.path}
                                     key={fileObject.path + 'file-reply'}
@@ -225,7 +225,7 @@ export default function Files({ value, filePath, recieved, fileReply, reply }){
                                                 onClick={(() => { fileClick(value.path) })}
                                                 style={style}
                                             >
-                                                <img src={`https://risala.codenoury.se/${value.path.substring(3)}`}/>
+                                                <img src={`https://risala.datablock.dev/${value.path.substring(3)}`}/>
                                             </figure>
                                         </>
                                     )
@@ -254,7 +254,7 @@ export default function Files({ value, filePath, recieved, fileReply, reply }){
                                                 onClick={(() => { fileClick(value.path) })}
                                                 style={style}
                                             >
-                                                <video src={`https://risa.codenoury.se/${value.path.substring(3)}`} controls/>
+                                                <video src={`https://risa.datablock.dev/${value.path.substring(3)}`} controls/>
                                             </figure>
                                         </>
                                     )
@@ -287,7 +287,7 @@ export default function Files({ value, filePath, recieved, fileReply, reply }){
                                     <>
                                         <a 
                                             className="file-wrapper" 
-                                            href={`https://risala.codenoury.se/${value.path.substring(3)}`} 
+                                            href={`https://risala.datablock.dev/${value.path.substring(3)}`} 
                                             target="_blank" rel="noopener noreferrer" 
                                             title={value.name}
                                             key={value.path}
@@ -321,7 +321,7 @@ export default function Files({ value, filePath, recieved, fileReply, reply }){
                             <>
                                 <a 
                                     className="file-wrapper" 
-                                    href={`https://risala.codenoury.se/${fileObject.path.substring(3)}`} 
+                                    href={`https://risala.datablock.dev/${fileObject.path.substring(3)}`} 
                                     target="_blank" rel="noopener noreferrer" 
                                     title={fileObject.path}
                                     key={fileObject.path}

@@ -58,7 +58,7 @@ export default function ChatCall({ locale, current, USER_DATA }){
                     }))
                 } else if(data.purpose === "screen-sharing"){
                     if(data.isSharing){
-                        console.log("Peer is presenting now")
+                        
 
                         // TEST!!!!!!!
                         // Remove fullscreen, peer is now presenting
@@ -86,28 +86,28 @@ export default function ChatCall({ locale, current, USER_DATA }){
             })
             socket.on('call-closed', (data) => {
                 if(callSettings.initiator){
-                    console.log(isMissed)
+                    
                     callMessage(socket, isMissed)
                 }
 
                 try {
                     document.querySelectorAll('.call-window video').forEach((video) => {
-                        console.log(video)
+                        
                         var tracks = video.srcObject.getTracks();
                         tracks.forEach((track) => {
-                            console.log(track)
+                            
                             track.stop()
                         })
                         video.srcObject = null;
                     })
                 } catch(err){
-                    console.log(err)
+                    
                 }
             
                 try {
                     userSettings.userPeer.destroy()
                 } catch(err){
-                    console.log(err)
+                    
                 }
 
                 dispatch(callSettingsReset())
@@ -115,7 +115,7 @@ export default function ChatCall({ locale, current, USER_DATA }){
                 informationManager({purpose: 'information', message: message})
             })
         } else if(!callSettings.isActive){
-            console.log("Inactive, remove all socket listeners")
+            
             socket.off('call-message')
             socket.off('call-error')
             socket.off('call-closed')
@@ -136,7 +136,7 @@ export default function ChatCall({ locale, current, USER_DATA }){
 
         if(timer === 30 && callSettings.isActive){
             if(callSettings.joined.length === 1 && callSettings.initiator){
-                console.log("Triggered missed call")
+                
                 callMessage(socket, true)
                 callTerminated(socket)
                 socket.emit('call-closed', {
@@ -378,7 +378,7 @@ export default function ChatCall({ locale, current, USER_DATA }){
         // This is the 2nd signal
         try {
             if(!callSettings.initiator){
-                console.log("Signal")
+                
                 userSettings.userPeer.signal(callSettings.signalData)
             }
         } catch (err) {
@@ -454,12 +454,12 @@ export default function ChatCall({ locale, current, USER_DATA }){
 
         // If the call was interrupted
         userSettings.userPeer.on('close', (err) => {
-            console.log(err)
+            
             callInterrupt(err, socket)
         })
 
         userSettings.userPeer.on('error', (err) => {
-            console.log(err)
+            
             informationManager({purpose: 'error', message: err.message ? err.message : err})
             callInterrupt(err, socket)
         })
@@ -554,7 +554,7 @@ export default function ChatCall({ locale, current, USER_DATA }){
             userVideo.current.srcObject = screenStream
     
             screenStream.getTracks()[0].onended = (screenCastStream) => {
-                console.log(screenCastStream)
+                
                 try {
                     userSettings.userPeer.replaceTrack(
                         screenCastStream.currentTarget,
@@ -575,15 +575,15 @@ export default function ChatCall({ locale, current, USER_DATA }){
                     })
                     
                 } catch(err){
-                    console.log(err)
+                    
                     informationManager({ purpose: 'error', message: 'Could not get camera stream back, please present again, and close the presentation through the button below (Do not click the button from the browser that says "Stop sharing")'})
                 }
             };
         })
         .catch((err) => {
-            console.log(err)
-            console.log(err.message)
-            console.log(err instanceof DOMException)
+            
+            
+            
     
             if(err instanceof DOMException){
                 //dispatch(chatReducer({
@@ -613,7 +613,7 @@ export default function ChatCall({ locale, current, USER_DATA }){
                     track.stop();
                 });
             } catch(err) {
-                console.log(err)
+                
                 informationManager({purpose: 'error', message: err.message})
             }
         }
@@ -621,7 +621,7 @@ export default function ChatCall({ locale, current, USER_DATA }){
         try {
             userVideo.current.srcObject = userSettings.userStream
         } catch(err){
-            console.log(err)
+            
             console.error(err)
             informationManager({purpose: 'error', message: err.message})
         }
@@ -642,11 +642,11 @@ export default function ChatCall({ locale, current, USER_DATA }){
                 userSettings.userStream
             );
         } catch(err){
-            console.log(err)
+            
             try {
                 userSettings.userPeer.replaceTrack(userSettings.userStream.getVideoTracks()[0])
             } catch(err){
-                console.log(err)
+                
                 informationManager({purpose: 'error', message: "Could not replace video track, please reload the page"})
             }
         }

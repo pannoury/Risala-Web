@@ -11,7 +11,7 @@ router.post('/', (req, res) => {
                 if(!err && result.affectedRows === 1){
                     res.status(200).send(result)
                 } else {
-                    console.log(err)
+                    
                     throw err
                 }
             })
@@ -30,7 +30,7 @@ router.post('/bug', (req, res) => {
                 if(!err && result.affectedRows === 1){
                     res.status(200).send(result)
                 } else {
-                    console.log(err)
+                    
                     throw err
                 }
             })

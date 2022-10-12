@@ -708,6 +708,7 @@
     }
     .arrow-bottom-button{
         position: absolute;
+        z-index: 50;
         display: flex;
         align-items: center;
         justify-content: center;

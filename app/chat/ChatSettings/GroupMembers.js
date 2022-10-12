@@ -72,7 +72,7 @@ export default function GroupMembers({group, admin, setAdmin, options, setOption
                             >
                                 <div className="user-info-wrapper">
                                     <figure>
-                                        <img src={value.profile_picture ? value.profile_picture : "https://codenoury.se/assets/generic-profile-picture.png"}/>
+                                        <img src={value.profile_picture ? value.profile_picture : "https://datablock.dev/assets/generic-profile-picture.png"}/>
                                     </figure>
                                     <p>
                                         <span>
@@ -107,7 +107,7 @@ export default function GroupMembers({group, admin, setAdmin, options, setOption
                 <div className="group-member">
                     <div className="user-info-wrapper">
                         <figure>
-                            <img src={USER_DATA.profile_picture ? USER_DATA.profile_picture : "https://codenoury.se/assets/generic-profile-picture.png"}/>
+                            <img src={USER_DATA.profile_picture ? USER_DATA.profile_picture : "https://datablock.dev/assets/generic-profile-picture.png"}/>
                         </figure>
                         <p>
                             <span>

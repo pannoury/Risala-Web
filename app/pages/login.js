@@ -33,12 +33,12 @@ export default function Login() {
           if(Object.keys(response).length > 0){
             router.push("/")
           } else {
-            console.log("Something is wrong")
-            console.log(response)
+            
+            
           }
         })
         .catch((err) => {
-          console.log(err)
+          
         })
       } catch {
         localStorage.removeItem('user') // Remove so this error does not occur again

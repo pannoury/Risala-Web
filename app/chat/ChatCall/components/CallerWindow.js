@@ -20,7 +20,7 @@ export default function CallerWindow({ socket }){
         })
         .catch((err) => {
             informationManager({purpose: 'error', message: `${err.message} Please allow your browser to access the camera/microphone.`})
-            console.log(err)
+            
             socket.emit('call-closed', {
                 id: callSettings.id,
                 user_id: USER_DATA.account_id,
@@ -72,7 +72,7 @@ export default function CallerWindow({ socket }){
                     <figure>
                         {
                             callSettings.members &&
-                            <img src={callSettings.members.filter(e => e.id !== USER_DATA.account_id)[0].profile_picture ? callSettings.members.filter(e => e.id !== USER_DATA.account_id)[0].profile_picture : "https://codenoury.se/assets/generic-profile-picture.png"} />
+                            <img src={callSettings.members.filter(e => e.id !== USER_DATA.account_id)[0].profile_picture ? callSettings.members.filter(e => e.id !== USER_DATA.account_id)[0].profile_picture : "https://datablock.dev/assets/generic-profile-picture.png"} />
                         }
                     </figure>
                     <span>

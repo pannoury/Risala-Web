@@ -38,7 +38,7 @@ export default function SignUp({setSignUp, setRestore}){
 
         const match = await postRequest('accounts/control', {username: values[2]})
 
-        console.log(match)
+        
         if(match.length === 0){
           postRequest('accounts/create', {
             id: uuidv4(),
@@ -56,7 +56,7 @@ export default function SignUp({setSignUp, setRestore}){
             //errorManagement(err)
             setLoading(false)
             alert("An error has occurred, please inform the administrator of this website")
-            console.log(err)
+            
           })
 
         } else {
@@ -129,7 +129,7 @@ export default function SignUp({setSignUp, setRestore}){
     return (
       <div id="login-wrapper">
       <div className="login-side-div">
-        <img src="https://codenoury.se/assets/logo-long-yellow.svg" alt="logo-long-yellow" />
+        <img src="https://risala.datablock.dev/assets/datablock_logo_long_white.svg" alt="logo-long-white" />
         {
           confirmed ?
           <>

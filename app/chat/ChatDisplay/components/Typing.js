@@ -48,7 +48,7 @@ export default function Typing({ typingAudio, chatDisplayWindow }) {
             </div>
             <audio 
                 ref={typingAudio}
-                src='https://risala.codenoury.se/assets/typing_sound.mp3' 
+                src='https://risala.datablock.dev/assets/typing_sound.mp3' 
                 autoPlay 
                 loop 
             ></audio>

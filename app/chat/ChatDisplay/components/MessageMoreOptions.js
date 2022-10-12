@@ -16,18 +16,18 @@ export default function MessageMoreOptions({ sent, inputRef }){
     dependent on reply or more options data. 
     */
     function optionSelect(e){
-        //console.log(COUNTER_DATA, USER_DATA)
+        //
 
         var classNames = e.currentTarget.classList[0]
         var target = e.currentTarget.parentElement.parentElement
         let object = null;
 
         if(classNames === "reply"){
-            //console.log(e.currentTarget.parentElement.parentElement.parentElement.classList[0])
-            //console.log(USER_DATA)
+            //
+            //
             if(target.querySelector('.message')){
                 var text = target.querySelector('.message').textContent
-                //console.log(target.parentElement.parentElement.getAttribute('user_id'))
+                //
             } else {
 
                 // This is triggered if a file/media is being replied to
@@ -37,7 +37,7 @@ export default function MessageMoreOptions({ sent, inputRef }){
                 if(files !== null){ // User is replying to a file and not a media (video || image)
                     var text = [files.getAttribute('href')]
                     object = 'file'
-                    //console.log(files)
+                    //
 
                 } else if(figures.length === 1){
                     if(figures[0].classList[0] === "video"){
@@ -84,12 +84,12 @@ export default function MessageMoreOptions({ sent, inputRef }){
 
                 }))
             } else {
-                console.log(target.parentElement.parentElement.getAttribute('message_id'))
+                
 
                 //Chat is a group chat
                 if(current.members.length > 2){
                     var userID = target.parentElement.parentElement.getAttribute('user_id')
-                    //console.log(current.members.filter(e => e.id === userID)[0])
+                    //
                     dispatch(chatReducer({
                         reply: {
                             reply: true,
@@ -126,14 +126,14 @@ export default function MessageMoreOptions({ sent, inputRef }){
             inputRef.current.focus();
             
         } else if(classNames === "more-options"){
-            //console.log(target)
+            //
             if(target.parentElement.getAttribute('message_id')){
                 var message_id = target.parentElement.getAttribute('message_id')
             } else {
                 var message_id = target.parentElement.parentElement.getAttribute('message_id')
             }
-            //console.log(target.parentElement, target.parentElement.parentElement)
-            //console.log(message_id)
+            //
+            //
 
             dispatch(chatReducer({
                 moreOptions: {

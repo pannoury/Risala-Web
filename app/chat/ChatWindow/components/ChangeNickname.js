@@ -143,7 +143,7 @@ export default function ChangeNickname({closeWindow, socket}){
                             >
                                 <div className="user-info-wrapper">
                                     <figure>
-                                        <img src={value.profile_picture ? value.profile_picture : "https://codenoury.se/assets/generic-profile-picture.png"}/>
+                                        <img src={value.profile_picture ? value.profile_picture : "https://datablock.dev/assets/generic-profile-picture.png"}/>
                                     </figure>
                                     {
                                         target && target === value.id ?

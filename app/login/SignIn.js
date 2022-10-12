@@ -24,8 +24,6 @@ export default function SignIn({setSignUp, setRestore}){
             password: passwordRef.current.value
           })
           .then((response) => {
-            console.log(response)
-
             if(typeof response === "object" && response.account_id && response.username){
               var cookieObject = {
                 id: response.account_id,
@@ -42,7 +40,7 @@ export default function SignIn({setSignUp, setRestore}){
             if(err.message === "Request failed with status code 404"){
               setIncorrect(true)
             } else {
-              console.log(err)
+              
               setIncorrect(true)
               //errorManagement(err)
             }
@@ -62,13 +60,13 @@ export default function SignIn({setSignUp, setRestore}){
     return(
         <div id="login-wrapper">
           <div className="login-side-div">
-            <img src="https://codenoury.se/assets/logo-long-yellow.svg" alt="logo-long-yellow" />
+            <img src="https://risala.datablock.dev/assets/datablock_logo_long_white.svg" alt="logo-long-yellow" />
             <h1>{locale !== "sv" ? "Sign in" : "Logga in"}</h1>
             <p className="light">
               {
                 locale !== "sv"
-                ? "Enter your credentials to access the admin panel"
-                : "Var god och ange dina användaruppgifter för att komma vidare till adminpanelen"
+                ? "Please enter your credentials to acess the chat application"
+                : "Var god och ange dina användaruppgifter för att komma vidare"
               }
             </p>
             {

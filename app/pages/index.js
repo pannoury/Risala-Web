@@ -126,7 +126,7 @@ export default function Index(){
                 dispatch(objectAdd({key: 'USER_DATA', value: response}))
             })
             .catch((err) => {
-              console.log(err)
+              
               setTimeout(() => {
                 router.push("/login/")
               }, 3000)
@@ -189,13 +189,13 @@ export default function Index(){
                 <meta name="description" content="Webbutvecklare" />
                 <meta name="author" content="Patrick Tannoury" />
                 <meta name="robots" content="index, follow" />
-                <meta property="og:url" content="https://risala.codenoury.se" />
+                <meta property="og:url" content="https://risala.datablock.dev" />
                 <meta property="og:description" content={locale !== "sv" ? "Open source chat application" : "Open source chatapplikation"}/>
-                <meta property="og:image" content="https://codenoury.se/assets/og_image.png"/>
-                <link rel="icon" type="image/png" sizes="16x16" href="https://codenoury.se/assets/favicon-16x16.png"/>
-                <link rel="icon" type="image/png" sizes="32x32" href="https://codenoury.se/assets/favicon-32x32.png"/>
+                <meta property="og:image" content="https://datablock.dev/assets/og_image.png"/>
+                <link rel="icon" type="image/png" sizes="16x16" href="https://datablock.dev/assets/favicon-16x16.png"/>
+                <link rel="icon" type="image/png" sizes="32x32" href="https://datablock.dev/assets/favicon-32x32.png"/>
                 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"></link>
-                <title>{`Risala | Codenoury`}</title>
+                <title>{`Risala | DataBlock`}</title>
             </Head>
                 {
                     isMobile &&

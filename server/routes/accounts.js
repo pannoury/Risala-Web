@@ -6,6 +6,7 @@ const fs = require('fs');
 const path = require('path');
 const mysql_database = require('../config');
 const nodemailer = require('nodemailer');
+const sgMail = require('@sendgrid/mail')
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -80,13 +81,13 @@ router.post('/upload', upload.single('profile_picture'), (req, res, next) => {
                     addProfilePicture(req.body['account_id'], newPathObject.profile_picture)
                 } else {
                     try {
-                        if(req.headers.referer === "https://codenoury.se/admin/" || req.headers.referer === "https://codenoury.se/admin" || req.headers.referer === "https://risala.codenoury.se"){
+                        if(req.headers.referer === "https://datablock.dev/admin/" || req.headers.referer === "https://datablock.dev/admin" || req.headers.referer === "https://risala.datablock.dev"){
                             fs.unlinkSync('/var/www/html/uploads' + result[0].profile_picture.substring(11, result[0].profile_picture.length), (err) => {
                                 if(err) throw err
                             })
                         } else if(req.headers.referer === "http://localhost:3000/" || req.headers.referer === "http://localhost:8000"){
                             fs.unlinkSync(path.resolve(__dirname, '..', '..', 'app', 'public', 'uploads', result[0].profile_picture.substring(11, result[0].profile_picture.length)), (err) => {
-                                console.log(err)
+                                
                                 if(err) throw err
                             })
                         }
@@ -114,7 +115,7 @@ router.post('/upload', upload.single('profile_picture'), (req, res, next) => {
             let sql = `select id, members from unique_chats where JSON_CONTAINS(members, '{"id": "${id}"}', '$')`
             mysql_database.query(sql, (err, result) => {
                 if(!err){
-                    console.log(result.length)
+                    
                     const membersLength = result.length
 
                     if(result.length === 0){
@@ -133,7 +134,7 @@ router.post('/upload', upload.single('profile_picture'), (req, res, next) => {
                                     res.send(err).status(400)
                                     isError = true;
                                 } else if(updateResult.affectedRows !== 1){
-                                    console.log("Affected rows is 0")
+                                    
                                 }
                             })
     
@@ -170,7 +171,7 @@ router.post('/create', (req, res) => {
             password: hash,
             profile_picture: null
         }
-        console.log(infoObject)
+        
     
         let sql = `insert into Accounts 
             (
@@ -199,12 +200,28 @@ router.post('/create', (req, res) => {
 
                 const mail_Ouput = createEmail(req.body.firstname, req.body.temp, req.body.username)
 
+                sgMail.setApiKey(process.env.SENDGRID_API_KEY)
+                const msg = {
+                    to: `${infoObject.username}`,
+                    from: "noreply@datablock.dev",
+                    subject: "Your inquiry has been recieved",
+                    html: mail_Ouput
+                }
+
+                sgMail.send(msg)
+                .then(() => {
+                    res.status(200).send("Success")
+                })
+                .catch((err) => {
+                    res.status(400).send(err)
+                })
+                /*
                 let transporter = nodemailer.createTransport({
                     host: process.env.MAIL_HOST,
                     port: 587,
                     secure: false,
                     auth: {
-                        user: "noreply@codenoury.se",
+                        user: "noreply@datablock.dev",
                         pass: process.env.MAIL_PASS
                     },
                     tls: {
@@ -213,7 +230,7 @@ router.post('/create', (req, res) => {
                 })
 
                 let mailOptions = {
-                    from: "Codenoury <noreply@codenoury.se>",
+                    from: "DataBlock <noreply@datablock.dev>",
                     to: `${infoObject.username}`,
                     subject: "Welcome to Risala",
                     html: mail_Ouput
@@ -235,7 +252,7 @@ router.post('/create', (req, res) => {
                     }
                     
                 })
-                
+                */
             } else throw err
         })
     } else {
@@ -250,12 +267,29 @@ router.post('/restore', (req, res) => {
             if(!err){
                 const mail_Ouput = restoreEmail(req.body.id, req.body.username)
 
+                sgMail.setApiKey(process.env.SENDGRID_API_KEY)
+                const msg = {
+                    to: `${req.body.username}`,
+                    from: "noreply@datablock.dev",
+                    subject: "Your inquiry has been recieved",
+                    html: mail_Ouput
+                }
+
+                sgMail.send(msg)
+                .then(() => {
+                    res.status(200).send("Success")
+                })
+                .catch((err) => {
+                    res.status(400).send(err)
+                })
+
+                /*
                 let transporter = nodemailer.createTransport({
                     host: process.env.MAIL_HOST,
                     port: 587,
                     secure: false,
                     auth: {
-                        user: "noreply@codenoury.se",
+                        user: "noreply@datablock.dev",
                         pass: process.env.MAIL_PASS
                     },
                     tls: {
@@ -264,7 +298,7 @@ router.post('/restore', (req, res) => {
                 })
         
                 let mailOptions = {
-                    from: "Codenoury <noreply@codenoury.se>",
+                    from: "DataBlock <noreply@datablock.dev>",
                     to: `${req.body.username}`,
                     subject: "Password restoration",
                     html: mail_Ouput
@@ -276,8 +310,9 @@ router.post('/restore', (req, res) => {
                 })
                 .catch((err) => {
                     res.send(err)
-                    console.log(err)
+                    
                 })
+                */
             } else {
                 throw err
             }
@@ -308,8 +343,6 @@ router.post('/change_password', (req, res) => {
         //hash password
         const saltRounds = 10;
         var hash = bcrypt.hashSync(req.body.password, saltRounds)
-
-        console.log(hash)
 
         if(hash){
             let sql = "update Accounts set password = ?, temp = null, temp_flag = null, expiration_date = null where account_id = ?"
@@ -342,7 +375,8 @@ router.post('/confirm', (req, res) => {
 })
 
 function createEmail(firstname, id, username){
-    const url = "https://risala.codenoury.se";
+    const url = "https://risala.datablock.dev";
+    const date = new Date().getFullYear()
 
     return(
         `
@@ -361,8 +395,8 @@ function createEmail(firstname, id, username){
                             <tr>
                                 <td style="width: 40px;"></td>
                                 <td>
-                                    <a href="https://codenoury.se" style="display: block; width: 262px;">
-                                        <img src="https://codenoury.se/assets/logo-long-white.png" style="height: 30px;" alt="logo">
+                                    <a href="https://datablock.dev" style="display: block; width: 262px;">
+                                        <img src="https://datablock.dev/assets/datablock_logo_long_white.png" style="height: 60px;" alt="logo">
                                     </a>
                                 </td>
                             </tr>
@@ -385,7 +419,7 @@ function createEmail(firstname, id, username){
                                             Your account has successfully been created.<br>
                                             Before you can sign in, you will be required to confirm your email by clicking on the button below.<br><br>
                                             Best regards,<br>
-                                            Codenoury
+                                            DataBlock
                                         </p>
                                     </td>
                                 </tr>
@@ -406,8 +440,8 @@ function createEmail(firstname, id, username){
                                 <tr>
                                     <td style="width: 40px;"></td>
                                     <td>
-                                        <a href="https://codenoury.se" style="display: block; width: 200px;">
-                                            <img src="https://codenoury.se/assets/logo-long-white.png" style="height: 20px;" alt="logo"/>
+                                        <a href="https://datablock.dev" style="display: block; width: 200px;">
+                                            <img src="https://datablock.dev/assets/datablock_logo_long_white.png" style="height: 40px;" alt="logo"/>
                                         </a>
                                     </td>
                                 </tr>
@@ -421,9 +455,9 @@ function createEmail(firstname, id, username){
                                 <tr>
                                     <td style="width: 40px;"></td>
                                     <td style="color: #ffffffb3;">
-                                        <a href="https://codenoury.se/projects" style="color: #ffffffb3; font-weight: bold; text-decoration: none;">Previous Projects</a>
+                                        <a href="https://datablock.dev/projects" style="color: #ffffffb3; font-weight: bold; text-decoration: none;">Previous Projects</a>
                                         <span>|</span>
-                                        <a href="https://codenoury.se/about" style="color: #ffffffb3; font-weight: bold; text-decoration: none;">About</a>
+                                        <a href="https://datablock.dev/about" style="color: #ffffffb3; font-weight: bold; text-decoration: none;">About</a>
                                         <span>|</span>
                                         <a style="color: #ffffffb3; font-weight: bold; text-decoration: none;">Docs</a>
                                     </td>
@@ -440,13 +474,13 @@ function createEmail(firstname, id, username){
                                     <td style="width: 40px;"></td>
                                     <td>
                                         <a style="font-size: 0; margin-right: 10px;" href="https://www.linkedin.com/in/patrick-tannoury/">
-                                            <img src="https://codenoury.se/assets/linkedin-logo-white.png" style="width: 30px; height: 30px;">
+                                            <img src="https://datablock.dev/assets/linkedin-logo-white.png" style="width: 30px; height: 30px;">
                                         </a>
                                         <a style="font-size: 0; margin-right: 10px;" href="https://github.com/pannoury">
-                                            <img src="https://codenoury.se/assets/github-logo-white.png" style="width: 30px; height: 30px;">
+                                            <img src="https://datablock.dev/assets/github-logo-white.png" style="width: 30px; height: 30px;">
                                         </a>
                                         <a style="font-size: 0;" href="https://www.upwork.com/freelancers/~015d0ecb241f77468a">
-                                            <img src="https://codenoury.se/assets/upwork-logo-white.png" style="width: 30px; height: 30px; object-fit: contain;">
+                                            <img src="https://datablock.dev/assets/upwork-logo-white.png" style="width: 30px; height: 30px; object-fit: contain;">
                                         </a>
                                     </td>
                                 </tr>
@@ -454,13 +488,13 @@ function createEmail(firstname, id, username){
                                 <tr>
                                     <td style="width: 40px; border: none; padding: 0; margin: 0;"></td>
                                     <td>
-                                        <p style="font-size: 12px; color: #ffffffb3; line-height: 1.5; max-width: 380px;">This message was sent to <a href="mailto: ${username}" style="color: #ffffffb3; font-weight: bold;">${username}</a>. This is not a recurring message, and you have not been subscribed to Codenoury by recieving this message.</p>
+                                        <p style="font-size: 12px; color: #ffffffb3; line-height: 1.5; max-width: 380px;">This message was sent to <a href="mailto: ${username}" style="color: #ffffffb3; font-weight: bold;">${username}</a>. This is not a recurring message, and you have not been subscribed to DataBlock by recieving this message.</p>
                                     </td>
                                 </tr>
                                 <tr style="height: 20px;"></tr>
                                 <tr>
                                     <td style="width: 40px; border: none; padding: 0; margin: 0;"></td>
-                                    <td><p style="color: #ffffffb3; font-size: 12px;">©2022 Codenoury, Stockholm, Sweden | <a href="https://codenoury.se" style="color: #ffffffb3; font-weight: bold;">https://codenoury.se</a></p></td>
+                                    <td><p style="color: #ffffffb3; font-size: 12px;">©${date} DataBlock, Stockholm, Sweden | <a href="https://datablock.dev" style="color: #ffffffb3; font-weight: bold;">https://datablock.dev</a></p></td>
                                 </tr>
                                 <tr style="height: 20px;"></tr>
                             </tbody>
@@ -476,7 +510,8 @@ function createEmail(firstname, id, username){
     )
 }
 function restoreEmail(id, username){
-    const url = "https://risala.codenoury.se";
+    const url = "https://risala.datablock.dev";
+    const date = new Date().getFullYear()
 
     return(
         `
@@ -495,8 +530,8 @@ function restoreEmail(id, username){
                             <tr>
                                 <td style="width: 40px;"></td>
                                 <td>
-                                    <a href="https://codenoury.se" style="display: block; width: 262px;">
-                                        <img src="https://codenoury.se/assets/logo-long-white.png" style="height: 30px;" alt="logo">
+                                    <a href="https://datablock.dev" style="display: block; width: 262px;">
+                                        <img src="https://datablock.dev/assets/datablock_logo_long_white.png" style="height: 60px;" alt="logo">
                                     </a>
                                 </td>
                             </tr>
@@ -520,7 +555,7 @@ function restoreEmail(id, username){
                                             In order to change your password, please click on the button below to confirm your email adress.<br>
                                             If you did not expect this email, please disregard and remove this email<br><br>
                                             Best regards,<br>
-                                            Codenoury
+                                            DataBlock
                                         </p>
                                     </td>
                                 </tr>
@@ -541,8 +576,8 @@ function restoreEmail(id, username){
                                 <tr>
                                     <td style="width: 40px;"></td>
                                     <td>
-                                        <a href="https://codenoury.se" style="display: block; width: 200px;">
-                                            <img src="https://codenoury.se/assets/logo-long-white.png" style="height: 20px;" alt="logo"/>
+                                        <a href="https://datablock.dev" style="display: block; width: 200px;">
+                                            <img src="https://datablock.dev/assets/datablock_logo_long_white.png" style="height: 40px;" alt="logo"/>
                                         </a>
                                     </td>
                                 </tr>
@@ -556,9 +591,9 @@ function restoreEmail(id, username){
                                 <tr>
                                     <td style="width: 40px;"></td>
                                     <td style="color: #ffffffb3;">
-                                        <a href="https://codenoury.se/projects" style="color: #ffffffb3; font-weight: bold; text-decoration: none;">Previous Projects</a>
+                                        <a href="https://datablock.dev/projects" style="color: #ffffffb3; font-weight: bold; text-decoration: none;">Previous Projects</a>
                                         <span>|</span>
-                                        <a href="https://codenoury.se/about" style="color: #ffffffb3; font-weight: bold; text-decoration: none;">About</a>
+                                        <a href="https://datablock.dev/about" style="color: #ffffffb3; font-weight: bold; text-decoration: none;">About</a>
                                         <span>|</span>
                                         <a style="color: #ffffffb3; font-weight: bold; text-decoration: none;">Docs</a>
                                     </td>
@@ -575,13 +610,13 @@ function restoreEmail(id, username){
                                     <td style="width: 40px;"></td>
                                     <td>
                                         <a style="font-size: 0; margin-right: 10px;" href="https://www.linkedin.com/in/patrick-tannoury/">
-                                            <img src="https://codenoury.se/assets/linkedin-logo-white.png" style="width: 30px; height: 30px;">
+                                            <img src="https://datablock.dev/assets/linkedin-logo-white.png" style="width: 30px; height: 30px;">
                                         </a>
                                         <a style="font-size: 0; margin-right: 10px;" href="https://github.com/pannoury">
-                                            <img src="https://codenoury.se/assets/github-logo-white.png" style="width: 30px; height: 30px;">
+                                            <img src="https://datablock.dev/assets/github-logo-white.png" style="width: 30px; height: 30px;">
                                         </a>
                                         <a style="font-size: 0;" href="https://www.upwork.com/freelancers/~015d0ecb241f77468a">
-                                            <img src="https://codenoury.se/assets/upwork-logo-white.png" style="width: 30px; height: 30px; object-fit: contain;">
+                                            <img src="https://datablock.dev/assets/upwork-logo-white.png" style="width: 30px; height: 30px; object-fit: contain;">
                                         </a>
                                     </td>
                                 </tr>
@@ -589,13 +624,13 @@ function restoreEmail(id, username){
                                 <tr>
                                     <td style="width: 40px; border: none; padding: 0; margin: 0;"></td>
                                     <td>
-                                        <p style="font-size: 12px; color: #ffffffb3; line-height: 1.5; max-width: 380px;">This message was sent to <a href="mailto: ${username}" style="color: #ffffffb3; font-weight: bold;">${username}</a>. This is not a recurring message, and you have not been subscribed to Codenoury by recieving this message.</p>
+                                        <p style="font-size: 12px; color: #ffffffb3; line-height: 1.5; max-width: 380px;">This message was sent to <a href="mailto: ${username}" style="color: #ffffffb3; font-weight: bold;">${username}</a>. This is not a recurring message, and you have not been subscribed to DataBlock by recieving this message.</p>
                                     </td>
                                 </tr>
                                 <tr style="height: 20px;"></tr>
                                 <tr>
                                     <td style="width: 40px; border: none; padding: 0; margin: 0;"></td>
-                                    <td><p style="color: #ffffffb3; font-size: 12px;">©2022 Codenoury, Stockholm, Sweden | <a href="https://codenoury.se" style="color: #ffffffb3; font-weight: bold;">https://codenoury.se</a></p></td>
+                                    <td><p style="color: #ffffffb3; font-size: 12px;">©${date} DataBlock, Stockholm, Sweden | <a href="https://datablock.dev" style="color: #ffffffb3; font-weight: bold;">https://datablock.dev</a></p></td>
                                 </tr>
                                 <tr style="height: 20px;"></tr>
                             </tbody>

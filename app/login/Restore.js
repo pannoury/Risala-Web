@@ -24,7 +24,7 @@ export default function Restore({setSignUp, setRestore}){
     */
 
     async function restore(){
-      console.log(username.current.value)
+      
       const match = await postRequest('accounts/control', {username: username.current.value})
       
       if(match.length === 1 && match[0].username === username.current.value){
@@ -36,15 +36,15 @@ export default function Restore({setSignUp, setRestore}){
         })
         .then((response) => {
           if(response.errno){
-            console.log("error")
+            
           } else {
             setSuccess(true)
           }
-          console.log(response)
+          
         })
         .catch((err) => {
           errorManagement(err)
-          console.log(err)
+          
         })
 
       } else {
@@ -55,8 +55,8 @@ export default function Restore({setSignUp, setRestore}){
     return (
         <div id="login-wrapper">
             <div className="login-side-div">
-              <img src="https://codenoury.se/assets/logo-long-yellow.svg" alt="logo-long-yellow" />
-              <h1>{locale === "en" ? "Restore Account" : "Återställ konto"}</h1>
+              <img src="https://risala.datablock.dev/assets/datablock_logo_long_white.svg" alt="logo-long-white" />
+              <h1 style={{marginBottom: '20px'}}>{locale === "en" ? "Restore Account" : "Återställ konto"}</h1>
               {
                 incorrect &&
                 <div id="wrong-password">

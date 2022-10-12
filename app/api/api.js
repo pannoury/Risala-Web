@@ -9,7 +9,7 @@ export function postRequest(URL, payload, headers){
         let url;
         window.location.hostname === "localhost" ? 
         url = `http://localhost:800/${URL}` :
-        url = `https://risala.codenoury.se/api/${URL}`
+        url = `https://risala.datablock.dev/api/${URL}`
 
         axios.post(url, payload, headers)
         .then((response) => {
@@ -30,7 +30,7 @@ export function getRequest(URL){
         let url;
         window.location.hostname === "localhost" ? 
         url = `http://localhost:800/${URL}` :
-        url = `https://risala.codenoury.se/api/${URL}`
+        url = `https://risala.datablock.dev/api/${URL}`
 
         axios(URL)
         .then((response) => {
@@ -54,7 +54,7 @@ export function errorManagement(payload){
         let url;
         window.location.hostname === "localhost" ? 
         url = `http://localhost:800/error` :
-        url = `https://risala.codenoury.se/api/error`
+        url = `https://risala.datablock.dev/api/error`
     
         try {
             axios.post(url, {

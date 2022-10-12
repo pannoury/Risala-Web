@@ -69,7 +69,7 @@ router.post('/', (req, res) => {
             }
         }
     } else{
-        console.log(req.body)
+        
     }
 })
 router.post('/delete', (req, res) => {
@@ -93,7 +93,7 @@ router.post('/delete', (req, res) => {
                     if(err) throw err
                 })
             }
-            console.log("File does not exists")
+            
         }
 
         let sql = "DELETE FROM Projects WHERE project_id = ?"

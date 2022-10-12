@@ -24,7 +24,7 @@ export default function Header({ locale }){
   }
 
   useEffect(() => {
-    console.log(getCookie('user'))
+    
     window.addEventListener('scroll', navbarScroll)
     window.addEventListener('load', navbarScroll)
   
@@ -72,8 +72,8 @@ export default function Header({ locale }){
   return(
     <header className='navbar-wrapper' style={ navbar === true ? {background: '#141414', borderBottom: '1px solid #ffffff33'} : {backgroundColor: 'transparent', borderBottom: '1px solid transparent'}}>
       <nav id="navbar">
-          <Link  onClick={() => {setMobileNavbar(false)} } href={locale === "Sv" ? "/Sv" : "/"}>
-            <a className='desktop-logo'><img src="https://codenoury.se/assets/logo-long-yellow.svg" alt="logo-yellow"/></a>
+          <Link  onClick={() => {setMobileNavbar(false)} } href={locale === "Sv" ? "https://datablock.dev/sv" : "https://datablock.dev"}>
+            <a className='desktop-logo'><img src="../assets/datablock_logo_long_yellow.svg" alt="logo-yellow"/></a>
           </Link>
           <div id="mobile-navbar-list" onClick={ navbarMobileList }>
               {
@@ -95,30 +95,31 @@ export default function Header({ locale }){
           </div>
           <div id="desktop-navbar-list" style={mobileNavbar === false ? {width: '0vw'} : {width: '100vw'}}>
               <ul>
-                <li><Link onClick={ navbarMobileList } href={"/services"}>{locale !== "sv" ? 'Services' : 'Tjänster'}</Link></li>
-                <li><Link onClick={ navbarMobileList } href={"/projects"}>{locale !== "sv" ? "Previous Projects" : "Tidigare Projekt"}</Link></li>
+                <li><Link onClick={ navbarMobileList } href={"https://datablock.dev/services"}>{locale !== "sv" ? 'Services' : 'Tjänster'}</Link></li>
+                <li><Link onClick={ navbarMobileList } href={"https://datablock.dev/projects"}>{locale !== "sv" ? "Previous Projects" : "Tidigare Projekt"}</Link></li>
                 <li className="separator"><div className="separator"></div></li>
                 <li>
                   <div className="button-wrapper-mobile">
                     <Link 
                       onClick={ navbarMobileList } 
-                      href={locale === "sv" ? "/Sv/contact" : "/contact"}
+                      href={locale === "sv" ? "https://datablock.dev/sv/contact" : "https://datablock.dev/contact"}
                     >
                       {locale !== "sv" ? "Contact me" : "Kontakta mig"}
                     </Link>
-                    { account === false ? 
-                      <Link onClick={ navbarMobileList } href={"/login"}>{locale !== "sv" ? "Sign in" : "Logga in"}</Link> :
-                      <Link onClick={ navbarMobileList } href={"/admin"}>Admin</Link>
+                    { 
+                      account === false ? 
+                      <Link onClick={ navbarMobileList } href={"https://datablock.dev/login"}>{locale !== "sv" ? "Sign in" : "Logga in"}</Link> :
+                      <Link onClick={ navbarMobileList } href={"https://datablock.dev/admin"}>Admin</Link>
                     }
                   </div>
                 </li>
               </ul>
           </div>
           <div className="button-wrapper" style={ locale !== "sv" ? {width: '240px'} : {width: '250px'}}>
-            <Link href={"/contact"}>{locale !== "sv" ? "Contact me" : "Kontakta mig"}</Link>
+            <Link href={"https://datablock.dev/contact"}>{locale !== "sv" ? "Contact me" : "Kontakta mig"}</Link>
             { account === false ? 
-              <Link href={"/login"}>{locale !== "sv" ? "Sign in" : "Logga in"}</Link> :
-              <Link href={"/admin"}>Admin</Link>
+              <Link href={"https://datablock.dev/login"}>{locale !== "sv" ? "Sign in" : "Logga in"}</Link> :
+              <Link href={"https://datablock.dev/admin"}>Admin</Link>
             }
           </div>
       </nav>

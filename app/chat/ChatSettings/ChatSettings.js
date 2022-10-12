@@ -75,7 +75,7 @@ export default function ChatSettings({ locale, current, USER_DATA }){
 
     useEffect(() => {
         if(options){
-            console.log(options)
+            
             window.addEventListener('click', windowClick)
         } else {
             window.removeEventListener('click', windowClick)
@@ -168,10 +168,10 @@ export default function ChatSettings({ locale, current, USER_DATA }){
                                 <>
                                     <div className="group-figure">
                                         <figure>
-                                            <img src={group[0].profile_picture ? `${group[0].profile_picture}` : "https://codenoury.se/assets/generic-profile-picture.png"}/>
+                                            <img src={group[0].profile_picture ? `${group[0].profile_picture}` : "https://datablock.dev/assets/generic-profile-picture.png"}/>
                                         </figure>
                                         <figure>
-                                            <img src={group[1].profile_picture ? `${group[1].profile_picture}` : "https://codenoury.se/assets/generic-profile-picture.png"}/>
+                                            <img src={group[1].profile_picture ? `${group[1].profile_picture}` : "https://datablock.dev/assets/generic-profile-picture.png"}/>
                                         </figure>
                                     </div>
                                     <span>
@@ -197,7 +197,7 @@ export default function ChatSettings({ locale, current, USER_DATA }){
                                         COUNTER_DATA[0] &&
                                         <>
                                             <figure>
-                                                <img src={(current.members && current.members.length > 0) ? COUNTER_DATA[0].profile_picture ? COUNTER_DATA[0].profile_picture : "https://codenoury.se/assets/generic-profile-picture.png" : "https://codenoury.se/assets/generic-profile-picture.png"}/>
+                                                <img src={(current.members && current.members.length > 0) ? COUNTER_DATA[0].profile_picture ? COUNTER_DATA[0].profile_picture : "https://datablock.dev/assets/generic-profile-picture.png" : "https://datablock.dev/assets/generic-profile-picture.png"}/>
                                             </figure>
                                             {
                                                 nickname ?
@@ -409,7 +409,7 @@ export default function ChatSettings({ locale, current, USER_DATA }){
                                     <a 
                                         className="file-row"
                                         key={value.path}
-                                        href={`https://risala.codenoury.se/${value.path.substring(3)}`} 
+                                        href={`https://risala.datablock.dev/${value.path.substring(3)}`} 
                                         target="_blank" 
                                         rel="noopener noreferrer" 
                                     >

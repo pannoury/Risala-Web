@@ -26,12 +26,13 @@ app.use(cors())
 app.disable('etag');
 
 httpServer.listen(process.env.SERVER_PORT, () =>{
-    console.log(`running on port ${process.env.SERVER_PORT}`)
+    
 })
 ///////////////////////////////////////////////////////
 
 //Routes
 const uploadRouter      = require('./routes/upload');
+const risalaUpload      = require('./routes/risalaUpload');
 const mailRouter        = require('./routes/mail');
 const dirRouter         = require('./routes/dir');
 const accountRouter     = require('./routes/accounts')
@@ -43,6 +44,7 @@ const projectsRouter    = require('./routes/projects');
 var route = process.env.EXPRESS_ROUTE
 
 app.use(route + '/upload', uploadRouter);
+app.use(route + '/risalaUpload', risalaUpload);
 app.use(route + '/mail', mailRouter);
 app.use(route + '/dir', dirRouter);
 app.use(route + '/accounts', accountRouter);
@@ -87,7 +89,7 @@ io.on('connection', (socket) => {
 
     
     socket.on('disconnect', (data) => {
-        console.log(`User Disconnected: ${socket.id}`);
+        
     });
 
     socket.on('remove', (data) => {
@@ -112,17 +114,17 @@ io.on('connection', (socket) => {
     /*                        CALLS                        */
     /*******************************************************/
     socket.on('call-init', (data) => {
-        console.log('**** CALL INIT *****', data.room)
+        
         socket.to(data.room).emit('call-init', data)
     })
     
     socket.on('call-closed', (data) => {
-        console.log('call-closed', data.room)
+        
         socket.to(data.room).emit('call-closed', data)
     })
 
     socket.on('call-join', (data) => {
-        console.log('Call-joined', data.room)
+        
         socket.to(data.room).emit('call-join', data)
     })
 
@@ -131,7 +133,7 @@ io.on('connection', (socket) => {
     })
 
     socket.on('call-error', (data) => {
-        console.log('**** CALL ERROR *****', data.room)
+        
         socket.to(data.room).emit('call-error', data)
     })
 });

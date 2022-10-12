@@ -18,7 +18,7 @@ export default function RemoveMessage({loading, setIsLoading, closeWindow, socke
 
     function removeMessageClick(){
         const imageExtension = ['gif', 'png', 'jpeg', 'jpg', 'svg', 'mkv', 'mp4', 'mpe', 'mpeg', 'mpeg4']
-        console.log(moreOptions.message_id)
+        
 
         if(moreOptions.message_id && current.id){
             var messages = document.querySelectorAll('.message')
@@ -43,7 +43,7 @@ export default function RemoveMessage({loading, setIsLoading, closeWindow, socke
             }
 
             function notLastMessage(){
-                console.log("Not Last Message")
+                
                 var list = messages[messages.length - 2].closest('li')
 
                 //Has file
@@ -51,7 +51,7 @@ export default function RemoveMessage({loading, setIsLoading, closeWindow, socke
                 //the split is supposed to then convert the string into array of file(s)
                 if(document.querySelector(`[message_id="${moreOptions.message_id}"]`).getAttribute('file')){
                     filePaths = JSON.parse(document.querySelector(`[message_id="${moreOptions.message_id}"]`).getAttribute('file'))
-                    console.log(filePaths)
+                    
                     
                 }
 
@@ -95,8 +95,8 @@ export default function RemoveMessage({loading, setIsLoading, closeWindow, socke
                 if(target.previousElementSibling.className === "separator"){
                     if(!target.nextElementSibling){ // <-- There is no message after the one selected
                         
-                        console.log(target.previousElementSibling)
-                        console.log(target.previousElementSibling.getAttribute('message_id'))
+                        
+                        
                         var addedMessageID = (target.previousElementSibling.getAttribute('message_id'))
                         message_id.push(addedMessageID) //Append the message_id
                         var newChat = [...chat].filter((e) => (e.message_id !== (moreOptions.message_id) && e.message_id !== addedMessageID)) 
@@ -107,7 +107,7 @@ export default function RemoveMessage({loading, setIsLoading, closeWindow, socke
                             message_id.push(addedMessageID) //Append the message_id
                             var newChat = [...chat].filter((e) => (e.message_id !== (moreOptions.message_id) && e.message_id !== addedMessageID))
                         } else {
-                            console.log("this is else if nextElement is separator")
+                            
                         }
                     }
                 } else {
@@ -134,9 +134,9 @@ export default function RemoveMessage({loading, setIsLoading, closeWindow, socke
                 } else {
                     var newObject = undefined;
                 }
-                console.log(message_id)
+                
                 if(!message_id){
-                    console.log(moreOptions.message_id)
+                    
                 } else {
                     setIsLoading(true)
                     if(current.members.length > 2){
@@ -170,21 +170,21 @@ export default function RemoveMessage({loading, setIsLoading, closeWindow, socke
                             e.recent_message = JSON.parse(e.recent_message)
                             e.roles ? e.roles = JSON.parse(e.roles) : null
                         })
-                        console.log(response)
+                        
                         dispatch(chatReducer({
                             chats: response,
                             isChat_window: !isChat_window
                         }))
                     })
                     .catch((err) => {
-                        console.log(err)
+                        
                         errorManagement(err)
                     })
                 }
             }
 
             function lastMessage(){
-                console.log("last message triggered")
+                
                 socket.emit('remove', {current_id: current.id, id: COUNTER_DATA.map((e) => e.id)})
                 setIsLoading(true)
                 postRequest('chat/delete-conv', {id: current.id})
@@ -224,12 +224,12 @@ export default function RemoveMessage({loading, setIsLoading, closeWindow, socke
                 })
                 .catch((err) => {
                     errorManagement(err)
-                    console.log(err)
+                    
                 })
                 dispatch(chatReducer({moreOptions:{visible: false}}))
             }
         } else {
-            console.log("No Message ID could be found")
+            
         }
     }
     

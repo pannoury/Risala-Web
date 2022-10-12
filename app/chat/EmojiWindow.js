@@ -35,7 +35,7 @@ export default function EmojiWindow({emojiSelect, settings, tempEmoji, setTempEm
 
     useEffect(() => {
         if(settings && settings === true){
-            console.log(settings)
+            
         }
 
     }, [settings])

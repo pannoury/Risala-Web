@@ -82,7 +82,7 @@ export default function VideoUI({ socket, peerVideo, userVideo }){
                         userSettings.isPresenting &&
                         <>
                             <figure>
-                                <img src={ USER_DATA.profile_picture ? USER_DATA.profile_picture : "https://codenoury.se/assets/generic-profile-picture.png" }/>
+                                <img src={ USER_DATA.profile_picture ? USER_DATA.profile_picture : "https://datablock.dev/assets/generic-profile-picture.png" }/>
                             </figure>
                             <span>You are presenting</span>
                         </>
@@ -92,7 +92,7 @@ export default function VideoUI({ socket, peerVideo, userVideo }){
                         peerSettings.isPresenting &&
                         <>
                             <figure>
-                                <img src={ peerSettings.peerObject.profile_picture ? peerSettings.peerObject.profile_picture : "https://codenoury.se/assets/generic-profile-picture.png" }/>
+                                <img src={ peerSettings.peerObject.profile_picture ? peerSettings.peerObject.profile_picture : "https://datablock.dev/assets/generic-profile-picture.png" }/>
                             </figure>
                             <span>
                                 {`${peerSettings.peerObject.firstname} ${peerSettings.peerObject.lastname} is presenting`}
@@ -108,7 +108,7 @@ export default function VideoUI({ socket, peerVideo, userVideo }){
                 {
                     (!peerSettings.isCam && peerSettings.peerObject && !peerSettings.isPresenting) &&
                     <figure>
-                        <img src={ peerSettings.peerObject.profile_picture ? peerSettings.peerObject.profile_picture : "https://codenoury.se/assets/generic-profile-picture.png" }/>
+                        <img src={ peerSettings.peerObject.profile_picture ? peerSettings.peerObject.profile_picture : "https://datablock.dev/assets/generic-profile-picture.png" }/>
                     </figure>
                 }
                 <div className="video-wrapper">
@@ -156,7 +156,7 @@ export default function VideoUI({ socket, peerVideo, userVideo }){
                 {
                     !userSettings.isCam && !userSettings.isPresenting &&
                     <figure>
-                        <img src={ USER_DATA.profile_picture ? USER_DATA.profile_picture : "https://codenoury.se/assets/generic-profile-picture.png" }/>
+                        <img src={ USER_DATA.profile_picture ? USER_DATA.profile_picture : "https://datablock.dev/assets/generic-profile-picture.png" }/>
                     </figure>
                 }
                 {

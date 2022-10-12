@@ -44,12 +44,12 @@ export default function Settings({ closeWindow, locale }){
         setLoading(false)
         setApproved(false)
         setUploadSuccess(true)
-        console.log(response)
+        
       }
     })
     .catch((err) => {
       setLoading(false)
-      console.log(err)
+      
       errorManagement(err)
     })
   }
@@ -99,7 +99,7 @@ export default function Settings({ closeWindow, locale }){
         setLoading(true)
         setApproved(false)
         errorManagement(err)
-        console.log(err)
+        
     })
   }
 

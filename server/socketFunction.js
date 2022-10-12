@@ -22,7 +22,7 @@ function sendMessage(data){
     if(data.new && data.new === true){
         createNewConvo(data, data.id, data.members, file_paths)
         .then((response) => {
-            console.log(response)
+            
         })
         .catch((err) => {
             throw err
@@ -213,8 +213,8 @@ function sendMessage(data){
 }
 
 function sendReply(data){
-    console.log("Reply")
-    console.log(data)
+    
+    
 
     var files = null;
     var file_paths = null;
@@ -263,7 +263,7 @@ function sendReply(data){
         ]
         mysql_database.query(sql, [values], (err, result, fields) => {
             if(!err){
-                console.log(result.affectedRows, fields)
+                
                 return result
             } else {
                 //Add error-handling/management
@@ -291,7 +291,7 @@ function sendReply(data){
         var values = [data.message_id, data.id, data.sender_id, data.reciever_id, data.text, files, file_paths, data.timestamp, data.reply_to_id, data.reply_text, data.reply_to_message_id, data.reply_to_name, null]
         mysql_database.query(sql, values, (err, result, fields) => {
             if(!err){
-                console.log(result.affectedRows, fields)
+                
                 return result
             }
             else {
@@ -304,7 +304,7 @@ function sendReply(data){
 function createNewConvo(data, id, members, file_paths){
     return new Promise((resolve, reject) => {
 
-        console.log(members)
+        
 
         var standardSettings = JSON.stringify({
             color: "#e1872c",
@@ -336,7 +336,7 @@ function createNewConvo(data, id, members, file_paths){
             for(let i = 0; i < uploadedFiles.length; i++){
 
                 var fileExtension = uploadedFiles[i].type.split('/')[0]
-                console.log(fileExtension)
+                
 
                 if(fileExtension === "image" || fileExtension === "video"){
                     filesObjects.images.push(uploadedFiles[i])
@@ -384,7 +384,7 @@ function createNewConvo(data, id, members, file_paths){
 
 function removeMessage(data){
     if(data.message_id && data.current_id && data.recent_message){
-        console.log('Line 298', data.message_id, data.filePaths, data.newFile)
+        
 
         try{
             var filePaths = JSON.parse(data.filePaths)
@@ -474,13 +474,13 @@ async function updateFileArray(id, files){
                 }
             } 
     
-            console.log(filesObjects, id)
+            
             var filesObjects = JSON.stringify(filesObjects)
     
             var sql = "update unique_chats set files = ? where id = ?"
             mysql_database.query(sql, [filesObjects, id], (err, result) => {
                 if(!err && result.rowAffected === 1){
-                    console.log("Success")
+                    
                 } else((err) => {
                     throw err
                 })
@@ -490,7 +490,7 @@ async function updateFileArray(id, files){
             for(let i = 0; i < uploadedFiles.length; i++){
 
                 var fileExtension = uploadedFiles[i].type.split('/')[0]
-                console.log(fileExtension)
+                
 
                 if(fileExtension === 'image' || fileExtension === "video"){
                     settings.images.push(uploadedFiles[i])

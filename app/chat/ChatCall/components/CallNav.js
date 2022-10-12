@@ -37,7 +37,7 @@ export default function CallNav({ socket, screenShare, stopScreenShare }){
         }
 
         if(peerSettings.peerObject){
-            console.log(peerSettings.peerObject)
+            
             socket.emit('call-message', {
                 purpose: 'camera',
                 enabled: !userSettings.isCam,
@@ -69,7 +69,7 @@ export default function CallNav({ socket, screenShare, stopScreenShare }){
                 }}
             ))
         } catch (err){
-            console.log(err)
+            
         }
     }
 
@@ -84,7 +84,7 @@ export default function CallNav({ socket, screenShare, stopScreenShare }){
                 video.srcObject = null;
             })
         } catch (err){
-            console.log(err)
+            
         }
 
         socket.emit('call-closed', {
@@ -194,7 +194,7 @@ export default function CallNav({ socket, screenShare, stopScreenShare }){
                     (!loading && callSettings.isActive) &&
                     <>
                         <figure>
-                            <img src={callSettings.members.filter(e => e.id !== USER_DATA.account_id)[0].profile_picture ? callSettings.members.filter(e => e.id !== USER_DATA.account_id)[0].profile_picture : "https://codenoury.se/assets/generic-profile-picture.png"} />
+                            <img src={callSettings.members.filter(e => e.id !== USER_DATA.account_id)[0].profile_picture ? callSettings.members.filter(e => e.id !== USER_DATA.account_id)[0].profile_picture : "https://datablock.dev/assets/generic-profile-picture.png"} />
                         </figure>
                         {
                             nickname ?

@@ -40,7 +40,7 @@ export default function AddMember({closeWindow, socket}){
             })
             .catch((err) => {
                 errorManagement(err)
-                console.log(err)
+                
             })
         } else {
             setUserSuggestLoading(false)
@@ -153,7 +153,7 @@ export default function AddMember({closeWindow, socket}){
                                 return(
                                     <div className="user-selected" key={i}>
                                         <figure>
-                                            <img src={e.profile_picture ? e.profile_picture : "https://codenoury.se/assets/generic-profile-picture.png"}/>
+                                            <img src={e.profile_picture ? e.profile_picture : "https://datablock.dev/assets/generic-profile-picture.png"}/>
                                         </figure>
                                         <span>{e.firstname + ' ' + e.lastname}</span>
                                         <div
@@ -182,7 +182,7 @@ export default function AddMember({closeWindow, socket}){
                                     <div className="user-wrapper" key={i} account_id={e.account_id}>
                                         <div className="user-info">
                                             <figure>
-                                                <img src={e.profile_picture ? e.profile_picture : "https://codenoury.se/assets/generic-profile-picture.png"}/>
+                                                <img src={e.profile_picture ? e.profile_picture : "https://datablock.dev/assets/generic-profile-picture.png"}/>
                                             </figure>
                                             <span>{e.firstname + ' ' + e.lastname}</span>
                                         </div>

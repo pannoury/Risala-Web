@@ -62,7 +62,7 @@ export default function BugReport({ closeWindow, locale }){
                         <label>Reporter</label>
                         <div className="user-info">
                             <figure>
-                                <img src={USER_DATA.profile_picture ? USER_DATA.profile_picture : "https://codenoury.se/assets/generic-profile-picture.png"}/>
+                                <img src={USER_DATA.profile_picture ? USER_DATA.profile_picture : "https://datablock.dev/assets/generic-profile-picture.png"}/>
                             </figure>
                             <span>{`${USER_DATA.firstname} ${USER_DATA.lastname}`}</span>
                         </div>

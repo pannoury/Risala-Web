@@ -13,7 +13,7 @@ export default function callMessage(socket, isMissed = false){
     const COUNTER_DATA = state.COUNTER_DATA
     const USER_DATA = state.USER_DATA
 
-    console.log(callSettings)
+    
 
     var textObject = {
         purpose: callSettings.purpose,
@@ -103,7 +103,7 @@ export default function callMessage(socket, isMissed = false){
         // Add recentMessage to messageObject to reduce Backend strain
         var recentMessage = newChat.recent_message
         messageObject = { ...messageObject, recentMessage}
-        //socket.emit('message', messageObject)
+        socket.emit('message', messageObject)
     } else {
         store.dispatch(chatReducer({
             chat: [...chat, messageObject],
@@ -113,6 +113,6 @@ export default function callMessage(socket, isMissed = false){
         // Add recentMessage to messageObject to reduce Backend strain
         var recentMessage = newChat.recent_message
         messageObject = { ...messageObject, recentMessage}
-        //socket.emit('message', messageObject)
+        socket.emit('message', messageObject)
     }
 }

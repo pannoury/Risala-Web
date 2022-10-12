@@ -4,16 +4,16 @@ import { postRequest, errorManagement }         from "../../api/api";
 import { chatReducer }                          from "../../features/chat";
 import { timeStamp }                            from "../../modules/timeStamp";
 
-import RecievedMessage  from "./components/RecievedMessage";
-import SentMessage      from "./components/SentMessage";
-import TimeSeparator    from "./components/TimeSeparator";
-import EventSeparator   from "./components/EventSeparator";
-import ArrowBottom      from "./components/ArrowBottom";
-import GroupBadge       from "./components/GroupBadge";
-import Typing           from "./components/Typing";
-import OptionsWindow    from "./components/OptionsWindow";
-import CallEvent from "./components/CallEvent";
-import informationManager from "../../modules/informationManager";
+import RecievedMessage      from "./components/RecievedMessage";
+import SentMessage          from "./components/SentMessage";
+import TimeSeparator        from "./components/TimeSeparator";
+import EventSeparator       from "./components/EventSeparator";
+import ArrowBottom          from "./components/ArrowBottom";
+import GroupBadge           from "./components/GroupBadge";
+import Typing               from "./components/Typing";
+import OptionsWindow        from "./components/OptionsWindow";
+import CallEvent            from "./components/CallEvent";
+import informationManager   from "../../modules/informationManager";
 
 
 /************************************************
@@ -106,7 +106,7 @@ export default function ChatDisplay({current, inputRef, chat, locale, USER_DATA}
             try {
                 chatDisplayWindow.current.removeEventListener('scroll', scrollDetect)
             } catch (e){
-                console.log(e)
+                
             }
         }
 
@@ -129,6 +129,7 @@ export default function ChatDisplay({current, inputRef, chat, locale, USER_DATA}
     }, [reply])
 
     function scrollDetect(e){
+        let position = e.target.scrollHeight;
         if(document.querySelector('.chat-list-wrapper')?.scrollTop === 0 && moreMessage && document.querySelector('.chat-list-wrapper').childElementCount >= 100 && !loading){
             setChatLoading(true)
             postRequest('chat/chat', {
@@ -139,6 +140,7 @@ export default function ChatDisplay({current, inputRef, chat, locale, USER_DATA}
 
                 var data = response
                 dispatch(chatReducer({chat: (data.reverse().concat(chat))}))
+                document.querySelector('.chat-list-wrapper').scrollTo(0, position)
                 setTimeout(() => {
                     setChatLoading(false)
                 }, 100)
@@ -154,7 +156,7 @@ export default function ChatDisplay({current, inputRef, chat, locale, USER_DATA}
             })
             .catch((err) => {
                 informationManager({purpose: 'error', message: "An error has occured with fetching messages, please reload the page"})
-                console.log(err)
+                
             })
         }
     }

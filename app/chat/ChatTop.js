@@ -203,10 +203,10 @@ export default function  ChatTop({setWidth, socket}){
                         <>
                             <div className="group-figure">
                                 <figure>
-                                    <img src={group[0].profile_picture ? `${group[0].profile_picture}` : "https://codenoury.se/assets/generic-profile-picture.png"}/>
+                                    <img src={group[0].profile_picture ? `${group[0].profile_picture}` : "https://datablock.dev/assets/generic-profile-picture.png"}/>
                                 </figure>
                                 <figure>
-                                    <img src={group[1].profile_picture ? `${group[1].profile_picture}` : "https://codenoury.se/assets/generic-profile-picture.png"}/>
+                                    <img src={group[1].profile_picture ? `${group[1].profile_picture}` : "https://datablock.dev/assets/generic-profile-picture.png"}/>
                                 </figure>
                             </div>
                             <span>
@@ -231,7 +231,7 @@ export default function  ChatTop({setWidth, socket}){
                         (!group && !loading && COUNTER_DATA) &&
                         <>
                             <figure>
-                                <img src={COUNTER_DATA ? COUNTER_DATA[0].profile_picture ? `https://risala.codenoury.se${COUNTER_DATA[0].profile_picture.substring(2)}` : "https://codenoury.se/assets/generic-profile-picture.png" : "https://codenoury.se/assets/generic-profile-picture.png"}/>
+                                <img src={COUNTER_DATA ? COUNTER_DATA[0].profile_picture ? `https://risala.datablock.dev${COUNTER_DATA[0].profile_picture.substring(2)}` : "https://datablock.dev/assets/generic-profile-picture.png" : "https://datablock.dev/assets/generic-profile-picture.png"}/>
                             </figure>
                             {
                                 nickname ?
@@ -325,7 +325,7 @@ export default function  ChatTop({setWidth, socket}){
                 }
             } catch(err){
                 errorManagement(err)
-                console.log(err)
+                
             }
 
             setUserSelected(id)
@@ -347,7 +347,7 @@ export default function  ChatTop({setWidth, socket}){
             }
             userSearchRef.current.focus();
         } else {
-            //console.log(id, firstname, lastname)
+            //
         }
     }
 
@@ -373,7 +373,7 @@ export default function  ChatTop({setWidth, socket}){
             .catch((err) => {
                 informationManager({purpose: 'error', message: err.message})
                 errorManagement(err)
-                console.log(err)
+                
             })
         } else {
             setUserSuggestLoading(false)
@@ -397,7 +397,7 @@ export default function  ChatTop({setWidth, socket}){
                             onClick={(() => { userSelect(value.account_id, value.firstname, value.lastname, value.profile_picture)})}
                         >
                             <figure>
-                                <img src={value.profile_picture ? value.profile_picture : "https://codenoury.se/assets/generic-profile-picture.png"}/>
+                                <img src={value.profile_picture ? value.profile_picture : "https://datablock.dev/assets/generic-profile-picture.png"}/>
                             </figure>
                             <span>
                                 {value.firstname} {value.lastname}
@@ -425,7 +425,7 @@ export default function  ChatTop({setWidth, socket}){
 
         // No match
         if(!match){
-            console.log("No match")
+            
             dispatch(chatReducer({
                 newMessage: {
                     is_searching: true,
@@ -456,7 +456,7 @@ export default function  ChatTop({setWidth, socket}){
             })
             .catch((err) => {
                 informationManager({purpose: 'error', message: `${err.message} Please allow your browser to access the camera/microphone.`})
-                console.log(err)
+                
             })
     
             function initCall(stream, cameraError = false){
